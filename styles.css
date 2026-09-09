@@ -1,0 +1,502 @@
+/* Adeptus Teamleadus — teamleadus.ru
+   Строгая «орденская» типографика: тёмный фон, латунный акцент, моноширинные вести.
+   Без внешних шрифтов и зависимостей. */
+
+:root {
+  --bg: #14120e;
+  --bg-raised: #1c1913;
+  --ink: #e6ddc9;
+  --ink-muted: #9d947e;
+  --brass: #c9a227;
+  --brass-dim: #8f7a2e;
+  --line: #35301f;
+  --grid-line: rgba(201, 162, 39, .045);
+  --grid-line-major: rgba(201, 162, 39, .08);
+  --glow: rgba(201, 162, 39, .4);
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --serif: "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f1e4;
+    --bg-raised: #fdfaf1;
+    --ink: #201c12;
+    --ink-muted: #6b6350;
+    --brass: #8a6d0b;
+    --brass-dim: #a98d2e;
+    --line: #d9d0b8;
+    --grid-line: rgba(138, 109, 11, .05);
+    --grid-line-major: rgba(138, 109, 11, .09);
+    --glow: rgba(138, 109, 11, .3);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.wrap {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+a { color: var(--brass); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; letter-spacing: .01em; }
+
+code {
+  font-family: var(--mono);
+  font-size: .9em;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: .05em .3em;
+}
+
+.mono, time { font-family: var(--mono); font-size: .8125rem; letter-spacing: .05em; }
+
+/* ── Шапка ─────────────────────────────── */
+
+.site-head {
+  border-bottom: 1px solid var(--line);
+}
+
+.site-head .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: .8rem;
+  padding-bottom: .8rem;
+  flex-wrap: wrap;
+}
+
+.site-head a { text-decoration: none; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 700;
+}
+
+.brand svg { color: var(--brass); flex-shrink: 0; }
+
+.site-nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.site-nav a { color: var(--ink-muted); font-family: var(--mono); font-size: .8125rem; text-transform: uppercase; letter-spacing: .1em; }
+.site-nav a:hover { color: var(--brass); }
+
+/* Переключатель языка (ATL-6) */
+.lang-switch { display: flex; align-items: center; gap: .45rem; font-family: var(--mono); font-size: .8125rem; letter-spacing: .1em; }
+.lang-switch a { color: var(--ink-muted); text-decoration: none; }
+.lang-switch a:hover { color: var(--brass); }
+.lang-switch .active { color: var(--brass); }
+.lang-switch .sep { color: var(--line); }
+
+/* Корневой выбор языка */
+.lang-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.4rem; }
+
+/* ── Хиро ──────────────────────────────── */
+
+.hero { text-align: center; padding: 3.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+.hero .emblem { color: var(--brass); margin-bottom: 1rem; }
+.hero .kicker { color: var(--ink-muted); text-transform: uppercase; margin: 0 0 .8rem; }
+.hero h1 { font-size: clamp(2rem, 7vw, 3.25rem); margin: 0 0 .6rem; }
+.hero .slogan { font-family: var(--serif); font-style: italic; font-size: clamp(1.05rem, 3.5vw, 1.3rem); color: var(--brass); margin: 0 auto .9rem; max-width: 34em; }
+.hero .lede { color: var(--ink-muted); max-width: 38em; margin: 0 auto 1.6rem; }
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--brass);
+  color: var(--brass);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: .7em 1.4em;
+  text-decoration: none;
+}
+.btn:hover { background: var(--brass); color: var(--bg); }
+
+/* ── Анонс (hot-блок announce; при null пуст и невидим) ── */
+
+.announce { margin-top: 1.4rem; }
+.announce p { margin: 0; border: 1px solid var(--brass-dim); background: var(--bg-raised); color: var(--ink); padding: .8em 1.2em; text-align: center; }
+.announce a { color: var(--brass); }
+
+/* ── Секции ────────────────────────────── */
+
+section { padding: 2.75rem 0; border-bottom: 1px solid var(--line); }
+
+.sec-head { margin-bottom: 1.5rem; }
+.sec-head .num { color: var(--brass-dim); }
+.sec-head h2 { font-size: 1.6rem; margin: .2rem 0 .3rem; }
+.sec-head p { color: var(--ink-muted); margin: 0; }
+
+/* Декоративная полоса-шапка секции/страницы (site/assets/headers/*.webp).
+   Картинка вплавляется в фон градиентом снизу; латунная линия-подчёркивание. */
+.sec-banner { position: relative; margin: 0 0 1.5rem; border-bottom: 1px solid var(--brass-dim); }
+.sec-banner img { display: block; width: 100%; height: clamp(120px, 16vw, 180px); object-fit: cover; }
+.sec-banner::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .12), transparent 30%, transparent 52%, var(--bg) 98%);
+}
+.ordo-hero .sec-banner, .founder-hero .sec-banner { margin: 1.5rem 0 0; }
+
+/* О проекте */
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.about-grid article { background: var(--bg-raised); border: 1px solid var(--line); padding: 1.1rem 1.2rem; }
+.about-grid h3 { margin: 0 0 .4rem; font-size: 1.05rem; color: var(--brass); }
+.about-grid p { margin: 0; font-size: .95rem; color: var(--ink-muted); }
+
+/* Вестник Ордена */
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1.1rem; padding: .85rem 0; border-top: 1px solid var(--line); }
+.news-list li:first-child { border-top: 0; }
+.news-list time { color: var(--brass-dim); padding-top: .3rem; white-space: nowrap; }
+.news-list h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin: 0; }
+.news-list p { grid-column: 2; margin: 0; font-size: .92rem; color: var(--ink-muted); }
+.news-list p a { white-space: nowrap; }
+
+/* Разборы */
+.post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; }
+.post-card { background: var(--bg-raised); border: 1px solid var(--line); padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .5rem; }
+.post-card:hover { border-color: var(--brass-dim); }
+.post-card time { color: var(--brass-dim); }
+.post-card h3 { margin: 0; font-size: 1.15rem; }
+.post-card h3 a { color: var(--ink); text-decoration: none; }
+.post-card h3 a:hover { color: var(--brass); }
+.post-card p { margin: 0; font-size: .92rem; color: var(--ink-muted); }
+
+.archive { margin-top: 2rem; }
+.archive h3 { font-size: 1.05rem; color: var(--ink-muted); text-transform: uppercase; font-family: var(--mono); font-weight: 400; letter-spacing: .1em; }
+.archive ol { list-style: none; margin: 0; padding: 0; column-width: 19rem; column-gap: 2.5rem; }
+.archive li { padding: .3rem 0; font-size: .95rem; break-inside: avoid; }
+.archive time { color: var(--brass-dim); margin-right: .6rem; }
+
+/* Каналы связи */
+.social { display: flex; gap: 1rem; flex-wrap: wrap; }
+.social a, .social .soon {
+  display: inline-block;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  padding: .8em 1.3em;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: .875rem;
+  letter-spacing: .05em;
+}
+.social a { color: var(--ink); }
+.social a:hover { border-color: var(--brass); color: var(--brass); }
+.social .soon { color: var(--ink-muted); border-style: dashed; }
+.social .tag { color: var(--brass-dim); margin-right: .5em; }
+
+/* ── Страница поста ───────────────────── */
+
+.post { padding: 2.5rem 0; }
+.post .crumb { font-family: var(--mono); font-size: .8125rem; letter-spacing: .08em; text-transform: uppercase; }
+.post h1 { font-size: clamp(1.6rem, 5.5vw, 2.4rem); margin: 1rem 0 .4rem; }
+.post .meta { color: var(--brass-dim); margin-bottom: 1.6rem; }
+.post-body p { margin: 0 0 1.1rem; }
+.post-body ul { margin: 0 0 1.1rem; padding-left: 1.3rem; }
+.post-body li { margin-bottom: .5rem; }
+.post-body strong { color: var(--brass); }
+.sources { margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1rem; color: var(--ink-muted); font-size: .875rem; }
+.sources .label { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--brass-dim); display: block; margin-bottom: .3rem; }
+.post-nav { margin-top: 2.2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .92rem; }
+
+/* Плашка примарха (ATL-9): страница разбора и карточки */
+.primarch-plaque { margin: -.9rem 0 1.6rem; }
+.primarch-plaque a {
+  display: inline-block;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  color: var(--brass);
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .06em;
+  padding: .45em .9em;
+  text-decoration: none;
+}
+.primarch-plaque a:hover { border-color: var(--brass-dim); color: var(--ink); }
+
+.card-lead { margin: 0; font-size: .72rem; letter-spacing: .05em; }
+.card-lead a { color: var(--brass-dim); text-decoration: none; }
+.card-lead a:hover { color: var(--brass); }
+
+/* Заметка фильтра архива (?primarch=<id> со страницы «Орден») */
+.filter-note { border: 1px dashed var(--brass-dim); background: var(--bg-raised); padding: .6em 1em; font-size: .9rem; color: var(--ink-muted); margin: 0 0 1.2rem; }
+
+/* ── Страница «Орден» / "The Ordo" (ATL-9) ── */
+
+.ordo { padding: 2.5rem 0 1rem; }
+.ordo-hero { text-align: center; margin-bottom: 1.6rem; }
+.ordo-hero h1 { font-size: clamp(1.9rem, 6vw, 2.7rem); margin: 0 0 .5rem; }
+.ordo-hero .subtitle { color: var(--ink-muted); max-width: 36em; margin: 0 auto; }
+.ordo-emperor { display: flex; justify-content: center; margin: 1.2rem 0 2rem; }
+.ordo-emperor .fig-art :is(svg, img) { width: clamp(140px, 22vw, 190px); height: auto; }
+
+.ordo-lore { max-width: 40rem; margin: 0 auto 2.4rem; }
+.ordo-lore p { margin: 0 0 1.1rem; }
+.ordo-lore p:first-child::first-letter {
+  font-family: var(--serif);
+  font-size: 3.1em;
+  line-height: .85;
+  float: left;
+  padding: .06em .12em 0 0;
+  color: var(--brass);
+}
+
+.ordo section { border-bottom: 0; padding: 2.4rem 0 1.4rem; }
+.primarch-cards { display: grid; gap: 1.2rem; }
+.primarch-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .4rem 1.5rem;
+  align-items: center;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  padding: 1.4rem 1.5rem;
+  scroll-margin-top: 1.2rem;
+}
+.primarch-card:hover { border-color: var(--brass-dim); }
+.primarch-card .fig-art { color: var(--brass); }
+.primarch-card .fig-art :is(svg, img), .primarch-card .fig-art img { width: 92px; height: auto; display: block; filter: drop-shadow(0 0 6px rgba(201, 162, 39, .12)); }
+.primarch-card h3 { margin: 0 0 .15rem; font-size: 1.3rem; }
+.pc-title { margin: 0 0 .1rem; color: var(--brass-dim); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+.pc-domain { margin: 0 0 .5rem; color: var(--ink-muted); font-size: .88rem; }
+.pc-motto { margin: 0 0 .5rem; font-family: var(--serif); font-style: italic; color: var(--brass); }
+.pc-about { margin: 0 0 .6rem; font-size: .94rem; color: var(--ink-muted); }
+.pc-link { margin: 0; font-size: .78rem; letter-spacing: .06em; }
+
+/* Лёгкая асимметрия колонны карточек примархов */
+@media (min-width: 44rem) {
+  .primarch-card:nth-child(even) { margin-left: 2.4rem; }
+  .primarch-card:nth-child(odd) { margin-right: 2.4rem; }
+}
+@media (max-width: 34rem) {
+  .primarch-card { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+}
+
+.ordo-founder-note { text-align: center; margin: -1.1rem 0 2.2rem; font-size: .95rem; color: var(--ink-muted); }
+.ordo-founder-note a { white-space: nowrap; }
+
+/* ── Страница «Основатель» / "The Founder" ── */
+
+.founder { padding: 2.5rem 0 1rem; }
+.founder-hero { text-align: center; margin-bottom: 2rem; }
+.founder-hero h1 { font-size: clamp(1.9rem, 6vw, 2.7rem); margin: 0 0 .6rem; }
+.founder-hero .founder-name { display: block; font-size: .55em; color: var(--brass); letter-spacing: .02em; margin-top: .4rem; }
+.founder-hero .subtitle { font-family: var(--serif); font-style: italic; color: var(--ink-muted); max-width: 34em; margin: 0 auto; }
+
+.founder-grid { display: grid; grid-template-columns: minmax(12rem, 15rem) 1fr; gap: 2.2rem; align-items: start; margin-bottom: 2.4rem; }
+@media (max-width: 44rem) { .founder-grid { grid-template-columns: 1fr; justify-items: center; } }
+
+/* Портрет 3:4 в орденской рамке: латунная линия + уголки.
+   Фото site/assets/founder/portrait.{jpg,webp} подставляется сборкой;
+   без него — гравюрный SVG-плейсхолдер (фигура за чертёжным столом). */
+.founder-portrait { margin: 0; position: relative; padding: .7rem; border: 1px solid var(--brass-dim); background: var(--bg-raised); width: 100%; max-width: 15rem; }
+.founder-portrait::before, .founder-portrait::after,
+.fp-corners::before, .fp-corners::after { content: ""; position: absolute; width: 1.1rem; height: 1.1rem; border: 0 solid var(--brass); }
+.founder-portrait::before { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.founder-portrait::after { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.fp-corners::before { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.fp-corners::after { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.fp-art { aspect-ratio: 3 / 4; color: var(--brass); }
+.fp-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fp-art svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 6px rgba(201, 162, 39, .12)); }
+.founder-portrait figcaption { margin-top: .6rem; text-align: center; color: var(--ink-muted); font-size: .72rem; letter-spacing: .06em; }
+.lamp-glow { fill: var(--brass); opacity: .12; filter: blur(8px); animation: halo-breathe 5s ease-in-out infinite; }
+
+.founder-text p { margin: 0 0 1.1rem; }
+.founder-text p:first-child::first-letter {
+  font-family: var(--serif);
+  font-size: 3.1em;
+  line-height: .85;
+  float: left;
+  padding: .06em .12em 0 0;
+  color: var(--brass);
+}
+
+.founder section { border-bottom: 0; padding: 2.2rem 0 1.4rem; }
+
+/* ── Фиксированный нескроллящийся фон (ATL-8) ──────────────
+   Отдельный fixed-слой (НЕ background-attachment: fixed — глючит на iOS):
+   blueprint-сетка градиентами + едва заметные латунные шестерни.
+   Контент скроллится поверх; сам слой даёт эффект параллакса. */
+
+.fixed-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(var(--grid-line-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-major) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+}
+
+.bg-ornaments { position: absolute; inset: 0; }
+.bg-gear { position: absolute; color: var(--brass); opacity: .05; }
+.bg-gear-a { width: 34rem; height: 34rem; top: -9rem; right: -11rem; animation: gear-turn 240s linear infinite; }
+.bg-gear-b { width: 22rem; height: 22rem; bottom: -7rem; left: -8rem; animation: gear-turn 180s linear infinite reverse; }
+
+@keyframes gear-turn { to { transform: rotate(360deg); } }
+
+/* Лёгкий CSS-параллакс орнаментного слоя — scroll-driven animation,
+   прогрессивное улучшение, без JS-скролл-хендлеров. */
+@supports (animation-timeline: scroll()) {
+  .bg-ornaments { animation: bg-drift linear both; animation-timeline: scroll(); }
+}
+@keyframes bg-drift { from { transform: translateY(0); } to { transform: translateY(-90px); } }
+
+/* ── Латунные разделители секций ──────── */
+
+.sec-divider { display: flex; justify-content: center; margin: -13px 0 -12px; position: relative; z-index: 2; color: var(--brass-dim); pointer-events: none; }
+.sec-divider svg { background: var(--bg); }
+
+/* ── Пантеон Ордена (ATL-8) ────────────
+   Full-width секция, перекрывающиеся ряды фигур: Император выходит за
+   верхнюю границу секции, примархи заходят под него, техножрецы — малый ряд. */
+
+.pantheon { padding: 2.4rem 0 2.6rem; border-bottom: 1px solid var(--line); position: relative; overflow: visible; }
+.pantheon-inner { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; }
+.pantheon .sec-head { text-align: center; margin-bottom: .4rem; }
+.pantheon-stage { position: relative; }
+
+.rank { display: flex; justify-content: center; flex-wrap: wrap; }
+
+.figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .55rem; text-align: center; position: relative; transition: transform .35s ease; }
+.fig-art { color: var(--brass); }
+.fig-art :is(svg, img) { display: block; filter: drop-shadow(0 0 6px rgba(201, 162, 39, .12)); transition: filter .35s ease; animation: fig-float 6s ease-in-out infinite; }
+.figure:hover { transform: translateY(-6px); }
+.figure:hover .fig-art :is(svg, img) { filter: drop-shadow(0 0 16px var(--glow)); }
+
+.fig-name { display: block; font-family: var(--serif); font-weight: 700; font-size: 1.02rem; }
+.fig-title { display: block; color: var(--brass-dim); font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; }
+.fig-motto { display: block; font-family: var(--serif); font-style: italic; color: var(--ink-muted); font-size: .88rem; max-width: 17em; }
+
+/* Император: центральная крупная фигура, поднята над границей секции */
+.rank-emperor { position: relative; z-index: 3; margin-top: .3rem; }
+.figure-emperor .fig-art :is(svg, img) { width: clamp(150px, 24vw, 208px); height: auto; }
+.figure-emperor .fig-name { font-size: 1.25rem; }
+
+/* Нимб: медленное «дыхание» свечения (4–6 с) */
+.halo-glow { fill: var(--brass); opacity: .14; filter: blur(7px); animation: halo-breathe 5s ease-in-out infinite; }
+.figure-emperor:hover .halo-glow { animation-name: halo-breathe-strong; }
+
+/* Примархи: сетка 4×2 (восемь аспектов), заходят под плинтус Императора,
+   лёгкая асимметрия «органной» расстановки через смещения колонок */
+.rank-primarchs {
+  position: relative; z-index: 2; margin-top: 1.8rem;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.9rem 1rem; justify-items: center; align-items: end;
+}
+.figure-primarch .fig-art :is(svg, img) { width: clamp(84px, 11vw, 112px); height: auto; }
+.figure-primarch .fig-motto { font-size: .8rem; max-width: 14em; }
+.rank-primarchs .figure:nth-child(4n+1) { margin-bottom: 1.3rem; }
+.rank-primarchs .figure:nth-child(4n+3) { margin-bottom: .7rem; }
+.rank-primarchs .figure:nth-child(1) .fig-art :is(svg, img) { animation-delay: -.8s; }
+.rank-primarchs .figure:nth-child(2) .fig-art :is(svg, img) { animation-delay: -1.6s; }
+.rank-primarchs .figure:nth-child(3) .fig-art :is(svg, img) { animation-delay: -2.4s; }
+.rank-primarchs .figure:nth-child(4) .fig-art :is(svg, img) { animation-delay: -3.2s; }
+.rank-primarchs .figure:nth-child(5) .fig-art :is(svg, img) { animation-delay: -4s; }
+.rank-primarchs .figure:nth-child(6) .fig-art :is(svg, img) { animation-delay: -4.8s; }
+.rank-primarchs .figure:nth-child(7) .fig-art :is(svg, img) { animation-delay: -5.6s; }
+.rank-primarchs .figure:nth-child(8) .fig-art :is(svg, img) { animation-delay: -6.4s; }
+
+.fig-domain { display: block; font-size: .74rem; line-height: 1.45; color: var(--ink-muted); max-width: 16em; }
+
+/* Техножрецы: малый ряд, мерцание глаз */
+.rank-techpriests { position: relative; z-index: 4; margin-top: 1.4rem; gap: clamp(.8rem, 4vw, 2.6rem); align-items: flex-start; }
+.figure-techpriest .fig-art :is(svg, img) { width: clamp(62px, 9vw, 82px); height: auto; }
+.figure-techpriest .fig-name { font-size: .92rem; }
+.figure-techpriest .fig-motto { font-size: .8rem; }
+.rank-techpriests .figure:nth-child(2) { margin-top: .9rem; }
+.rank-techpriests .figure:nth-child(1) .fig-art :is(svg, img) { animation-delay: -2.3s; }
+.rank-techpriests .figure:nth-child(3) .fig-art :is(svg, img) { animation-delay: -4.6s; }
+
+.tp-eye { fill: var(--brass); animation: eye-flicker 4.4s steps(1, end) infinite; }
+.rank-techpriests .figure:nth-child(2) .tp-eye { animation-delay: -1.5s; }
+.rank-techpriests .figure:nth-child(3) .tp-eye { animation-delay: -3s; }
+.figure-techpriest:hover .tp-eye { animation: none; opacity: 1; }
+
+@keyframes fig-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes halo-breathe {
+  0%, 100% { opacity: .12; }
+  50% { opacity: .34; }
+}
+@keyframes halo-breathe-strong {
+  0%, 100% { opacity: .3; }
+  50% { opacity: .55; }
+}
+@keyframes eye-flicker {
+  0%, 88%, 100% { opacity: 1; }
+  90% { opacity: .15; }
+  93% { opacity: .8; }
+  96% { opacity: .3; }
+}
+
+@media (max-width: 52rem) {
+  .rank-primarchs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1rem; }
+  .rank-primarchs .figure:nth-child(4n+1),
+  .rank-primarchs .figure:nth-child(4n+3) { margin-bottom: 0; }
+  .rank-primarchs .figure:nth-child(odd) { margin-bottom: .9rem; }
+}
+
+@media (max-width: 40rem) {
+  .rank-emperor { margin-top: 0; }
+  .rank-primarchs { margin-top: 1.2rem; }
+  .rank-primarchs .figure:nth-child(odd) { margin-bottom: 0; }
+  .rank-techpriests .figure:nth-child(2) { margin-top: 0; }
+  .rank { gap: 1.4rem; }
+}
+
+/* Лёгкая асимметрия сетки разборов */
+@media (min-width: 40rem) {
+  .post-grid { padding-bottom: 1rem; }
+  .post-grid .post-card:nth-child(even) { transform: translateY(1rem); }
+  .post-grid .post-card:nth-child(3n) { transform: translateY(.4rem); }
+}
+
+/* Отключение всей анимации по системной настройке */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fig-art :is(svg, img), .halo-glow, .tp-eye, .bg-gear, .bg-ornaments, .lamp-glow { animation: none !important; }
+  .figure, .figure:hover { transform: none; transition: none; }
+  .halo-glow { opacity: .2; }
+}
+
+/* ── Подвал ───────────────────────────── */
+
+.site-foot { padding: 1.8rem 0 2.5rem; color: var(--ink-muted); font-size: .84rem; }
+.site-foot .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.site-foot a { color: var(--ink-muted); }
+.site-foot a:hover { color: var(--brass); }
+
+@media (max-width: 26rem) {
+  .news-list li { grid-template-columns: 1fr; }
+  .news-list p { grid-column: 1; }
+}
