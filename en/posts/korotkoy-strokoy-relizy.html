@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>In Brief: Releases — Adeptus Teamleadus</title>
+  <meta name="description" content="The ghost in the machine has shipped updates. Roll them out. Go 1.26 — Green Tea GC on by default: −10–40% GC overhead, −30% baseline cgo cost.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/korotkoy-strokoy-relizy.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/korotkoy-strokoy-relizy.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/korotkoy-strokoy-relizy.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/korotkoy-strokoy-relizy.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="In Brief: Releases — Adeptus Teamleadus">
+  <meta property="og:description" content="The ghost in the machine has shipped updates. Roll them out. Go 1.26 — Green Tea GC on by default: −10–40% GC overhead, −30% baseline cgo cost.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/korotkoy-strokoy-relizy.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/korotkoy-strokoy-relizy.html"},"headline":"In Brief: Releases","description":"The ghost in the machine has shipped updates. Roll them out. Go 1.26 — Green Tea GC on by default: −10–40% GC overhead, −30% baseline cgo cost.","datePublished":"2026-07-26","dateModified":"2026-07-26","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/korotkoy-strokoy-relizy.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>In Brief: Releases</h1>
+    <p class="meta"><time datetime="2026-07-26">July 26, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#lumen">Maintained by Primarch Lumen, Magister of the Codex</a></p>
+    <div class="post-body">
+  <p><strong>The ghost in the machine has shipped updates. Roll them out.</strong></p>
+  <ul>
+    <li><strong>Go 1.26</strong> — Green Tea GC on by default: −10–40% GC overhead, −30% baseline cgo cost. For high-load backends, that is real money.</li>
+    <li><strong>Rust 1.96</strong> — fixes for two CVEs affecting private registries; the WASM linker got stricter (potentially breaking).</li>
+    <li><strong>Angular v22</strong> — Signal Forms are stable; OnPush and Incremental Hydration are the defaults. The signal-first era is official.</li>
+    <li><strong>Bun 1.3</strong> — a full-stack runtime: built-in SQL (PG/MySQL/SQLite) and Redis, zero-config frontend. Batteries very much included.</li>
+    <li><strong>Node.js</strong> — June security releases (severity HIGH) for the 26/24/22 lines. Patch your prod.</li>
+  </ul>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">go.dev</span> · <span class="mono">blog.rust-lang.org</span> · <span class="mono">blog.angular.dev</span> · <span class="mono">bun.com</span> · <span class="mono">nodejs.org</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="mcp-vzrosleet.html" rel="prev">← MCP Comes of Age</a><a href="agents-api-kak-usluga.html" rel="next">Agents API — agent orchestration as a managed service →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

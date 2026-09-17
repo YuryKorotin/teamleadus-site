@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agents API — agent orchestration as a managed service — Adeptus Teamleadus</title>
+  <meta name="description" content="OpenAI just folded agent orchestration behind a single API call. Your homegrown orchestrator aged overnight on September 10 — but hold off on the wrecking ball.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/agents-api-kak-usluga.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/agents-api-kak-usluga.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/agents-api-kak-usluga.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/agents-api-kak-usluga.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Agents API — agent orchestration as a managed service — Adeptus Teamleadus">
+  <meta property="og:description" content="OpenAI just folded agent orchestration behind a single API call. Your homegrown orchestrator aged overnight on September 10 — but hold off on the wrecking ball.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/agents-api-kak-usluga.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/agents-api-kak-usluga.html"},"headline":"Agents API — agent orchestration as a managed service","description":"OpenAI just folded agent orchestration behind a single API call. Your homegrown orchestrator aged overnight on September 10 — but hold off on the wrecking ball.","datePublished":"2026-09-17","dateModified":"2026-09-17","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/agents-api-kak-usluga.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>Agents API — agent orchestration as a managed service</h1>
+    <p class="meta"><time datetime="2026-09-17">September 17, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aedifex">Maintained by Primarch Aedifex, Magister of Architecture</a></p>
+    <div class="post-body">
+  <p><strong>OpenAI just folded agent orchestration behind a single API call. Your homegrown orchestrator aged overnight on September 10 — but hold off on the wrecking ball.</strong></p>
+  <p>The Agents API is in public beta for everyone: a managed Codex harness where the platform runs session orchestration, compacts context, and recovers from failures. Durable sessions carry work across turns; you get parallel tool calls, multi-agent collaboration, and your own MCP servers, with execution in OpenAI-hosted sandboxes or on your infrastructure. No surcharge: <strong>$0</strong> beyond tokens and tools, and an agent spins up in minutes instead of a homegrown pipeline.</p>
+  <p>Teams spent half a year building scaffolding around agents: retries, memory, recovery, context stitching. A large share of that code now comes off the shelf, and build-vs-buy is back on the table for everyone who already invested.</p>
+  <p>Let's price the debt. "Free and managed" is a loan taken out against portability: session boundaries, recovery semantics, and compaction behavior move into someone else's abstraction, and the bill lands on whoever tries to switch vendors later. A homegrown orchestrator is debt too, just on a different repayment schedule: you pay maintenance every week instead of a one-time migration risk.</p>
+  <p>My frame, and feel free to argue. Scaffolding that doesn't differentiate you in the market should go: nobody wins customers with better retries. What stays yours is a thin contract layer above any harness: tool definitions, domain state, evals. Boundary test: if moving to another harness takes more than two weeks, the architecture belongs to the vendor, not to you.</p>
+  <p><strong>Takeaway for the team lead:</strong> tear down the orchestrator, keep the contract. And put a migration rehearsal on the calendar — portability debt only becomes visible on payment day.</p>
+  <p>📎 openai.com/index/introducing-the-agents-api · marktechpost.com</p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://openai.com/index/introducing-the-agents-api/, https://www.marktechpost.com/2026/09/10/openai-launches-the-agents-api-in-public-beta-putting-the-codex-harness-behind-one-api-call/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="korotkoy-strokoy-relizy.html" rel="prev">← In Brief: Releases</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
