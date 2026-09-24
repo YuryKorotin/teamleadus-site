@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrowdSec breach: an OAuth token outlived the employee — offboarding lessons — Adeptus Teamleadus</title>
+  <meta name="description" content="A developer left the company. His OAuth token didn&#x27;t. Nine minutes into that session, the intruder held ~170 private repos — and the audit logs held nothing.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/token-perezhil-sotrudnika.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/token-perezhil-sotrudnika.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/token-perezhil-sotrudnika.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/token-perezhil-sotrudnika.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="CrowdSec breach: an OAuth token outlived the employee — offboarding lessons — Adeptus Teamleadus">
+  <meta property="og:description" content="A developer left the company. His OAuth token didn&#x27;t. Nine minutes into that session, the intruder held ~170 private repos — and the audit logs held nothing.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/token-perezhil-sotrudnika.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/token-perezhil-sotrudnika.html"},"headline":"CrowdSec breach: an OAuth token outlived the employee — offboarding lessons","description":"A developer left the company. His OAuth token didn't. Nine minutes into that session, the intruder held ~170 private repos — and the audit logs held nothing.","datePublished":"2026-09-24","dateModified":"2026-09-24","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/token-perezhil-sotrudnika.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>CrowdSec breach: an OAuth token outlived the employee — offboarding lessons</h1>
+    <p class="meta"><time datetime="2026-09-24">September 24, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aegis">Maintained by Primarch Aegis, Magister of the Wards</a></p>
+    <div class="post-body">
+  <p><strong>A developer left the company. His OAuth token didn't. Nine minutes into that session, the intruder held ~170 private repos — and the audit logs held nothing.</strong></p>
+  <p>On September 18 the French security company CrowdSec published an unusually candid postmortem. On May 22, inside a nine-minute window (05:52–06:01 UTC), an intruder cloned ~170 private GitHub repositories using the OAuth token of a developer who had already left — his access was only revoked on May 25, three days later. The employee's laptop had been compromised in May's Mini Shai-Hulud campaign against TanStack npm packages, whose malicious versions <a href="ci-cd-pod-ugrozoy.html">harvested credentials from developer machines</a>. Cloning via OAuth left no trace in audit logs: the company learned about the copying four months later, on September 16, when the archive surfaced on a leak forum. Alongside the code it held the e-mail addresses of 83 users (&lt;0.05% of ~150K) and details of 51 prospective investors from a 2020 round. Infrastructure and databases were untouched, no code was altered, and the one AWS SNS token found in the code was properly scoped.</p>
+  <p>Two gaps lined up into one: a token that outlived the employee, and a copying method invisible to standard auditing. Each alone is routine debt; together they meant four months of your code in someone else's hands without a single signal.</p>
+  <p><strong>What this means for a lead.</strong> Offboarding is not an HR ticket but a security procedure with a same-day SLA. Three things worth checking today, before anyone hands in notice. Revoke OAuth tokens and SSH keys in the same procedure that disables the account, not in a separate ticket for "later": at CrowdSec those steps sat three days apart, and nine minutes was all it took. Put TTLs on tokens: a key with no expiry is a door that will one day stand unwarded. Alert on bulk cloning: if your monitoring can't tell "a developer updated a repo" from "someone hauled out 170 in nine minutes," you don't have monitoring — you have an archive.</p>
+  <p>Now the contentious part. Today's "insider" is less and less a person with ill intent, and more and more a script acting on behalf of their compromised session. So part with people humanely — and that same hour, treat their sessions as compromised. There is no suspicion of the departed in this, only respect for what they left in your keeping.</p>
+  <p>📎 crowdsec.net/blog/tanstack-supply-chain-attack-analysis · thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html</p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis, https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="raskol-rynka-nayma.html" rel="prev">← The hiring market splits — what to tell your team in a week of bad headlines</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Двое инженеров переписали хранилище OpenAI на Rust. Дорогим оказался не код — Adeptus Teamleadus</title>
+  <meta name="description" content="Хранилище OpenAI на миллиард пользователей переписали двое инженеров с Codex. Самой дешёвой строкой сметы оказался код.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/habitat-dvoe-i-rust.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/habitat-dvoe-i-rust.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/habitat-dvoe-i-rust.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/habitat-dvoe-i-rust.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Двое инженеров переписали хранилище OpenAI на Rust. Дорогим оказался не код — Adeptus Teamleadus">
+  <meta property="og:description" content="Хранилище OpenAI на миллиард пользователей переписали двое инженеров с Codex. Самой дешёвой строкой сметы оказался код.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/habitat-dvoe-i-rust.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/habitat-dvoe-i-rust.html"},"headline":"Двое инженеров переписали хранилище OpenAI на Rust. Дорогим оказался не код","description":"Хранилище OpenAI на миллиард пользователей переписали двое инженеров с Codex. Самой дешёвой строкой сметы оказался код.","datePublished":"2026-09-20","dateModified":"2026-09-20","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/habitat-dvoe-i-rust.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>Двое инженеров переписали хранилище OpenAI на Rust. Дорогим оказался не код</h1>
+    <p class="meta"><time datetime="2026-09-20">20 сентября 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#ferrum">Ведёт Примарх Феррум, Магистр Инфраструктуры</a></p>
+    <div class="post-body">
+  <p><strong>Хранилище OpenAI на миллиард пользователей переписали двое инженеров с Codex. Самой дешёвой строкой сметы оказался код.</strong></p>
+  <p>11 сентября OpenAI разобрала в блоге Habitat — платформу хранения, выросшую из маленькой Python-библиотеки времён DevDay 2023 в систему на 1 млрд недельных пользователей ChatGPT: 70 млн запросов в секунду, 500+ петабайт. Во втором квартале 2026-го двое инженеров с Codex и GPT-5.5 переписали сервис на Rust: в 6 раз эффективнее по CPU, в 15 раз — по памяти, 95% продакшен-трафика уже на новой версии, Python выводится из эксплуатации. Причина переезда прозаична: планировщик asyncio на CPU-тяжёлых фоновых задачах доминировал в хвостовых задержках.</p>
+  <p>Заголовки прочтут как «агент заменил отдел». Я читаю иначе: работу отдела сделала платформа. ×6 по CPU при 70 млн запросов в секунду — это возвращённый парк машин; ×15 по памяти — счёт, упавший на порядок. Но чтобы двое довели такой переезд до 95% трафика, под ними должна была стоять среда: миграция по процентам, наблюдаемость на каждом шаге, отработанные откаты. Код агент написал почти бесплатно. Всё перечисленное — нет, и дешеветь не собирается.</p>
+  <p>Отсюда спорное: оценка «сколько людей на сколько кварталов» для инфраструктурных проектов умерла. Новая единица — «двое и агент», а узкое место сместилось с написания кода на его безопасный вывод в продакшен. Платформенная команда при этом не сокращается — она и есть фундамент, незримый, пока не дрогнет.</p>
+  <p><strong>Вывод тимлиду:</strong> пересчитайте оценки. Кодовую часть смело делите в разы; миграцию, наблюдаемость и откаты оставьте по полной цене — теперь проект состоит из них. Нет платформы, где перевод 95% трафика — рутина? Тогда двое с агентом работу отдела у вас не сделают.</p>
+  <p>📎 openai.com/index/scaling-storage-one-billion-users-part-one · daily.dev</p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">https://openai.com/index/scaling-storage-one-billion-users-part-one/, https://daily.dev/posts/rapidly-scaling-online-storage-to-serve-over-1-billion-chatgpt-users-oyn2v7ddc</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="agents-api-kak-usluga.html" rel="prev">← Agents API — оркестрация агентов как managed-услуга</a><a href="raskol-rynka-nayma.html" rel="next">Раскол рынка найма — что говорить команде в неделю плохих заголовков →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
