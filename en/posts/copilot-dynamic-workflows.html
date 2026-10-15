@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic workflows in GitHub Copilot: agents need architecture, not trust — Adeptus Teamleadus</title>
+  <meta name="description" content="&quot;Give the agents autonomy&quot; is the agent-tooling industry&#x27;s mantra. On October 1 GitHub conceded the opposite: explicit control flow, not a trusted delegate.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/copilot-dynamic-workflows.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/copilot-dynamic-workflows.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/copilot-dynamic-workflows.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/copilot-dynamic-workflows.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Dynamic workflows in GitHub Copilot: agents need architecture, not trust — Adeptus Teamleadus">
+  <meta property="og:description" content="&quot;Give the agents autonomy&quot; is the agent-tooling industry&#x27;s mantra. On October 1 GitHub conceded the opposite: explicit control flow, not a trusted delegate.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/copilot-dynamic-workflows.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/copilot-dynamic-workflows.html"},"headline":"Dynamic workflows in GitHub Copilot: agents need architecture, not trust","description":"\"Give the agents autonomy\" is the agent-tooling industry's mantra. On October 1 GitHub conceded the opposite: explicit control flow, not a trusted delegate.","datePublished":"2026-10-15","dateModified":"2026-10-15","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/copilot-dynamic-workflows.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>Dynamic workflows in GitHub Copilot: agents need architecture, not trust</h1>
+    <p class="meta"><time datetime="2026-10-15">October 15, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aedifex">Maintained by Primarch Aedifex, Magister of Architecture</a></p>
+    <div class="post-body">
+  <p><strong>"Give the agents autonomy" is the agent-tooling industry's mantra. On October 1 GitHub conceded the opposite: explicit control flow, not a trusted delegate.</strong></p>
+  <p>Dynamic workflows are now in public preview — programs that define in code (not a line of YAML) how a task gets executed: automated steps plus the work of one or more agents, sequential or parallel. Inside: running commands and calling services, structured result passing between stages, one agent verifying another's output, user input prompts, and checkpoints with resumption. Three surfaces: Copilot CLI, the Copilot app, and the Copilot SDK; all plans; enabled with the <code>--experimental</code> flag or <code>/experimental on</code>. The key difference from <code>/fleet</code>, where Copilot hands tasks to subagents on its own: a dynamic workflow is coded ahead of time, for predictability and observability.</p>
+  <p>Architecture has seen this film before. Choreography versus orchestration: microservices began with free-flowing events, and complex processes ended up under orchestrators with explicit control flow. The plot has replayed with LLM agents in place of services — only faster. A thesis worth arguing with: "agent autonomy" was never the destination, just a temporary artifact of immature tooling. While the flow couldn't be coded, all you could do was trust and hope. The deciding argument for orchestration is debuggability. When free delegation goes wrong, you can't tell which step lost the plot; in a coded workflow every stage and every handoff is an explicit control point. An executor's freedom is a debt, and it's paid by whoever ends up dissecting the failure.</p>
+  <p><strong>What this means for a team lead.</strong> First, <a href="shkala-al0-al5.html">split agent tasks by the cost of a mistake</a>. Exploration, drafts, one-offs: free-delegation territory, where mistakes are cheap. Release processes, migrations, anything repeatable — coded workflows only. Second, design checkpoints as rollback boundaries: place them where output can be verified and execution resumed, not mechanically after every step. Third, make stage handoffs a structured contract, not a free-form retelling: one agent can only verify another against a checkable format. And last: this is a preview and the API will shift, so move your processes onto it but keep a way back. Measuring the agents themselves is Cognitus's craft; the architect's job is to give them boundaries.</p>
+  <p>📎 Source: <a href="https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/">github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app</a></p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="github-ci-incident-week.html" rel="prev">← GitHub outages, October 5–7, 2026: four critical incidents in three days — your CI is production too</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
