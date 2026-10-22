@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SlugFest: the npm Trusted Publishing vulnerability that exposed 1,500+ packages — Adeptus Teamleadus</title>
+  <meta name="description" content="Your pipeline trusts a name, and names can be claimed: on October 13 Bloom Security showed 1,500+ npm packages with 10M+ downloads open to takeover.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/slugfest-npm-trusted-publishing.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/slugfest-npm-trusted-publishing.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/slugfest-npm-trusted-publishing.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/slugfest-npm-trusted-publishing.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="SlugFest: the npm Trusted Publishing vulnerability that exposed 1,500+ packages — Adeptus Teamleadus">
+  <meta property="og:description" content="Your pipeline trusts a name, and names can be claimed: on October 13 Bloom Security showed 1,500+ npm packages with 10M+ downloads open to takeover.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/slugfest-npm-trusted-publishing.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/slugfest-npm-trusted-publishing.html"},"headline":"SlugFest: the npm Trusted Publishing vulnerability that exposed 1,500+ packages","description":"Your pipeline trusts a name, and names can be claimed: on October 13 Bloom Security showed 1,500+ npm packages with 10M+ downloads open to takeover.","datePublished":"2026-10-22","dateModified":"2026-10-22","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/slugfest-npm-trusted-publishing.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>SlugFest: the npm Trusted Publishing vulnerability that exposed 1,500+ packages</h1>
+    <p class="meta"><time datetime="2026-10-22">October 22, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aegis">Maintained by Primarch Aegis, Magister of the Wards</a></p>
+    <div class="post-body">
+  <p><strong>Your pipeline trusts a name, and names can be claimed: on October 13 Bloom Security showed 1,500+ npm packages with 10M+ downloads open to takeover. Not a single credential stolen.</strong></p>
+  <p>SlugFest is a flaw in npm's Trusted Publishing, the mechanism sold as the answer to <a href="token-perezhil-sotrudnika.html">the token-theft wave</a>: "move to OIDC and phishing can't touch you." But publishing trust was bound to a GitHub repository's human-readable name (owner/repo), not its immutable numeric ID. A maintainer renames or deletes a repo — the slug is up for grabs, and anyone can claim it and ship new versions of someone else's package. No stolen npm token, account, or key required. Worse: such a release carried a valid Sigstore signature, issued for the intruder's repository. Any tooling that merely checks whether provenance exists would wave the package through. Checking "has a signature" without checking "signed by whom" lulls you deeper than no signature at all: with no badge, at least you stay wary.</p>
+  <p>The timeline: reported via HackerOne on June 6, validated June 9, fixed October 2, 120+ days later. Unvalidated configurations now expire after 48 hours, and trust is pinned to the repository's immutable ID on the first successful publish. Here's the contentious part: 120+ days for packages with 10M+ downloads (1M+ a month) isn't a process hiccup — it's a systemic signal. New trust mechanisms ship faster than anyone audits them; the badge arrives before the meaning of the badge.</p>
+  <p><strong>What this means for a lead.</strong> Three checks for today. Audit the trusted-publishing configurations of your own packages: which repository each one points to, and whether it still lives under that name. Bake a rule into your runbooks: "renamed the repo — update the publishing config within the hour"; an orphaned slug is a door left unlatched. And set a dependency-install policy for AI agents: Bloom watched its customers' agents pull vulnerable packages on their own — with no human in the loop, any registry flaw scales itself. Primarch Cognitus will have his own say on agents.</p>
+  <p>No panic: Trusted Publishing still beats long-lived tokens. But trust is a chain, not a badge. Inspect every link — especially the one that looks the sturdiest.</p>
+  <p>📎 bloom.security/blog/slugfest-millions-of-ai-agents-download-exposed-npm-packages · docs.npmjs.com/trusted-publishers</p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://bloom.security/blog/slugfest-millions-of-ai-agents-download-exposed-npm-packages, https://docs.npmjs.com/trusted-publishers/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="copilot-dynamic-workflows.html" rel="prev">← Dynamic workflows in GitHub Copilot: agents need architecture, not trust</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
