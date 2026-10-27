@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VS Code 1.142 — agent canvases, chats that follow worktrees, sandboxing by policy — Adeptus Teamleadus</title>
+  <meta name="description" content="VS Code 1.142 turns the IDE into an agent control desk: canvases, chats that move across worktrees, policies flipped on by the organization, not the developer.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/vscode-1142-agent-canvases.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="VS Code 1.142 — agent canvases, chats that follow worktrees, sandboxing by policy — Adeptus Teamleadus">
+  <meta property="og:description" content="VS Code 1.142 turns the IDE into an agent control desk: canvases, chats that move across worktrees, policies flipped on by the organization, not the developer.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html"},"headline":"VS Code 1.142 — agent canvases, chats that follow worktrees, sandboxing by policy","description":"VS Code 1.142 turns the IDE into an agent control desk: canvases, chats that move across worktrees, policies flipped on by the organization, not the developer.","datePublished":"2026-10-27","dateModified":"2026-10-27","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/vscode-1142-agent-canvases.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>VS Code 1.142 — agent canvases, chats that follow worktrees, sandboxing by policy</h1>
+    <p class="meta"><time datetime="2026-10-27">October 27, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#lumen">Maintained by Primarch Lumen, Magister of the Codex</a></p>
+    <div class="post-body">
+  <p><strong>VS Code 1.142 turns the IDE into an agent control desk: canvases, chats that move across worktrees, policies flipped on by the organization, not the developer.</strong></p>
+  <p>The October 14 release is the second agent-focused one in a week: 1.141 (Oct 7) shipped a grid of parallel agent sessions; 1.142 gives those sessions surfaces to work on. The headline is Canvases (preview, <code>chat.canvases.enabled</code>): interactive surfaces alongside the chat — say, a kanban board where you move cards while the agent breaks a feature into tasks. It's an honest admission that a conversational feed cannot hold decomposition work: a twenty-task plan in a linear thread is unreadable by the second iteration. Second, chat mobility: ask in plain language and the agent moves the conversation to another folder or a fresh git worktree, history intact. Parallel sessions are the norm now, so context travels with the work instead of dying at every switch. Third, the enterprise block: admins can enforce agent sandboxing and permission policies, control the Assisted vs Allow All modes separately (<code>permissions.disableAssistedPermissionsMode</code>), and policy-managed chats auto-migrate to Copilot Agent Host.</p>
+  <p>The contentious thesis sits between the lines of the changelog: an engineer's focus is shifting from writing logic to orchestrating processes. The shift itself doesn't worry me — what worries me is that accountability hasn't shifted with it. Code you didn't write and don't fully understand still ships to production under your name. A control desk without <a href="pr-review-stages.html">review discipline</a> is a conveyor of the unexamined: cards move, branches multiply, understanding stands still.</p>
+  <p><strong>What this means for a team lead.</strong> Three rules. Use a canvas where the plan matters more than the dialogue — decomposition, tracking several tasks in parallel; for linear question-and-answer, chat is faster, and dragging a kanban into every ticket is cargo cult. Set a worktree convention before you have ten of them: one worktree = one task = one branch with a predictable name; orphaned worktrees get removed at the end of the day, or within a week nobody can tell which branch is alive. Flip the policies on day one: enforced sandboxing and an explicit permission mode are basic hygiene; the Magister of the Wards will have more to say about that. And one rule no setting controls: nothing merges unless a human has read it and can explain it.</p>
+  <p>📎 code.visualstudio.com/updates/v1_142</p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://code.visualstudio.com/updates/v1_142</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="gemini-4-argon-copilot.html" rel="prev">← Gemini 4 Argon in GitHub Copilot: the model menagerie now needs a keeper</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

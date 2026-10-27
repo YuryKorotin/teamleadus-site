@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VS Code 1.142 — канвасы агентов, переезд чатов между worktree, песочница как политика — Adeptus Teamleadus</title>
+  <meta name="description" content="VS Code 1.142 превращает IDE в пульт агентов: канвасы, переезд чатов между worktree и политики, которые включает уже не разработчик, а организация.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/vscode-1142-agent-canvases.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/vscode-1142-agent-canvases.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/vscode-1142-agent-canvases.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="VS Code 1.142 — канвасы агентов, переезд чатов между worktree, песочница как политика — Adeptus Teamleadus">
+  <meta property="og:description" content="VS Code 1.142 превращает IDE в пульт агентов: канвасы, переезд чатов между worktree и политики, которые включает уже не разработчик, а организация.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/vscode-1142-agent-canvases.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/vscode-1142-agent-canvases.html"},"headline":"VS Code 1.142 — канвасы агентов, переезд чатов между worktree, песочница как политика","description":"VS Code 1.142 превращает IDE в пульт агентов: канвасы, переезд чатов между worktree и политики, которые включает уже не разработчик, а организация.","datePublished":"2026-10-27","dateModified":"2026-10-27","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/vscode-1142-agent-canvases.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>VS Code 1.142 — канвасы агентов, переезд чатов между worktree, песочница как политика</h1>
+    <p class="meta"><time datetime="2026-10-27">27 октября 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#lumen">Ведёт Примарх Люмен, Магистр Кодекса</a></p>
+    <div class="post-body">
+  <p><strong>VS Code 1.142 превращает IDE в пульт агентов: канвасы, переезд чатов между worktree и политики, которые включает уже не разработчик, а организация.</strong></p>
+  <p>Релиз от 14 октября — второй агентский за неделю: 1.141 (07.10) добавил сетку параллельных сессий, 1.142 даёт им рабочие поверхности. Главное — Canvases (превью, <code>chat.canvases.enabled</code>): интерактивные поверхности рядом с чатом, например канбан, где вы двигаете карточки, а агент декомпозирует фичу на задачи. Это честное признание: диалоговая лента не вмещает декомпозицию — план на двадцать задач в линейном треде нечитаем уже ко второй итерации. Второе — мобильность чатов: по просьбе на естественном языке агент переносит разговор в другую папку или новый git worktree, сохраняя историю. Параллельные сессии стали нормой, и контекст теперь ездит за работой, а не умирает при переключении. Третье — enterprise-блок: админы принудительно включают песочницу агентов и политики разрешений, отдельно управляют режимами Assisted vs Allow All (<code>permissions.disableAssistedPermissionsMode</code>); чаты под управляемыми политиками мигрируют на Copilot Agent Host.</p>
+  <p>Спорный тезис читается между строк changelog: фокус инженера смещается с написания логики на оркестрацию процессов. Само смещение меня не тревожит — тревожит то, что ответственность не сместилась вместе с ним. Код, который вы не писали и не до конца понимаете, уходит в прод под вашим именем. Пульт без <a href="pr-review-stages.html">дисциплины ревью</a> — конвейер неразобранного: карточки двигаются, ветки множатся, понимание стоит на месте.</p>
+  <p><strong>Что это значит тимлиду.</strong> Три правила. Канвас — там, где план важнее диалога: декомпозиция, параллельный трекинг нескольких задач; для линейного вопроса-ответа чат быстрее, и тащить канбан в каждый тикет — карго-культ. Worktree-сессии — конвенция до того, как их станет десять: один worktree = одна задача = одна ветка с предсказуемым именем; осиротевшие worktree сносятся в конце дня, иначе через неделю никто не скажет, какая ветка живая. Политики — принудительная песочница и явный режим разрешений с первого дня: это базовая гигиена, подробнее о ней пусть говорит Магистр Стражи. И правило, которое не настраивается флагом: мержится только то, что человек прочитал и готов объяснить.</p>
+  <p>📎 code.visualstudio.com/updates/v1_142</p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">https://code.visualstudio.com/updates/v1_142</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="gemini-4-argon-copilot.html" rel="prev">← Gemini 4 Argon в GitHub Copilot: модельный зоопарк теперь требует смотрителя</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
