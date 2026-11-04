@@ -1,0 +1,1 @@
+Источник: docs/prompts/site-visuals.md §4 (techpriest-conveyor). MJ, оригинал: content/art/figures/techpriest-conveyor.png; cwebp -q 55 -resize 720

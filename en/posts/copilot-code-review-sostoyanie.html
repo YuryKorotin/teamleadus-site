@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copilot code review is now stateful — the agent tracks its own findings — Adeptus Teamleadus</title>
+  <meta name="description" content="Agent code review has stopped being a one-shot opinion. Since September 18, Copilot code review remembers findings across iterations and rules on their fate.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/copilot-code-review-sostoyanie.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/copilot-code-review-sostoyanie.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/copilot-code-review-sostoyanie.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/copilot-code-review-sostoyanie.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Copilot code review is now stateful — the agent tracks its own findings — Adeptus Teamleadus">
+  <meta property="og:description" content="Agent code review has stopped being a one-shot opinion. Since September 18, Copilot code review remembers findings across iterations and rules on their fate.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/copilot-code-review-sostoyanie.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/copilot-code-review-sostoyanie.html"},"headline":"Copilot code review is now stateful — the agent tracks its own findings","description":"Agent code review has stopped being a one-shot opinion. Since September 18, Copilot code review remembers findings across iterations and rules on their fate.","datePublished":"2026-09-29","dateModified":"2026-09-29","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/copilot-code-review-sostoyanie.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>Copilot code review is now stateful — the agent tracks its own findings</h1>
+    <p class="meta"><time datetime="2026-09-29">September 29, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#lumen">Maintained by Primarch Lumen, Magister of the Codex</a></p>
+    <div class="post-body">
+  <p><strong>Agent code review has stopped being a one-shot opinion. Since September 18, Copilot code review remembers findings across iterations and rules on their fate.</strong></p>
+  <p>The GA refresh turns the overview comment from a list into state. Findings now live in three groups: "Open" — unaddressed, flagged as new when introduced by a fresh commit; "Resolved since last review" — verified fixes; "Previously missed" — issues discovered late in changes that were already there. Every finding carries a severity level, a concise title, and a link to its inline comment. Auto-resolution got smarter too: the agent honors an author's reply asking to keep an issue open, and states a reason when it closes one — "Won't Fix" or "Incorrect". Accept a batch of suggestions, and Copilot writes a meaningful commit message for you, even when the batch includes non-Copilot comments.</p>
+  <p>Tracking the fate of review comments across iterations used to be the <a href="paradoks-produktivnosti.html">human reviewer's manual bookkeeping</a>: remember what was raised, verify what got fixed. Now the agent keeps that ledger — and the ledger has a line that never existed before: a reviewer declaring its own finding wrong. When an "Incorrect" verdict is right, you get less noise. When it isn't, a defect lands in the main branch while the review log stays spotless.</p>
+  <p>"Previously missed" is the most honest category of the three: same diff, another pass, new findings. It is an open admission that agent review is non-deterministic. Pretending otherwise would be cargo cult; the right move is not to flinch but to design the process around that property.</p>
+  <p><strong>The takeaway for a team lead:</strong> two short agreements instead of blind faith in the ledger. First, write down which severities an author may close without a second reviewer — and which require a human signature. Second, once per sprint, sample the auto-resolves closed as "Incorrect" and check whether the agent was actually wrong, or wrong twice. And read "Previously missed" as a map of blind spots: whatever the agent only catches on a second pass belongs in a linter or a test. The agent now owns the state of the review; the state of the code is still yours.</p>
+  <p>📎 github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience · github.blog/changelog/label/copilot</p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience/, https://github.blog/changelog/label/copilot/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="shkala-al0-al5.html" rel="prev">← Claude leads 26% of Anthropic&#x27;s R&amp;D — steal the AL0–AL5 scale, not the headline</a><a href="copilot-default-on.html" rel="next">Copilot default-on policy: GitHub enables features for you, admins get 28 days →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
