@@ -1,0 +1,1 @@
+Источник: docs/prompts/site-visuals.md §3 («Кодекс»/лонгриды). MJ 1024x1024, кроп 1024x400 offset y=300 (sips), cwebp -q 70; оригинал: content/art/site/header-codex-source.png
