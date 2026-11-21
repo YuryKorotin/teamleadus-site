@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wfx-loot: кража CI-секретов через угнанные GitHub-аккаунты — как защитить пайплайн — Adeptus Teamleadus</title>
+  <meta name="description" content="12 секунд — столько в одном случае wfx-loot прошло от кражи CI-секретов до зачистки следов: реверт коммита, удаление логов. Ревьюер ещё не открыл вкладку.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/wfx-loot-trust-is-not-review.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/wfx-loot-trust-is-not-review.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/wfx-loot-trust-is-not-review.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/wfx-loot-trust-is-not-review.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="wfx-loot: кража CI-секретов через угнанные GitHub-аккаунты — как защитить пайплайн — Adeptus Teamleadus">
+  <meta property="og:description" content="12 секунд — столько в одном случае wfx-loot прошло от кражи CI-секретов до зачистки следов: реверт коммита, удаление логов. Ревьюер ещё не открыл вкладку.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/wfx-loot-trust-is-not-review.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/wfx-loot-trust-is-not-review.html"},"headline":"wfx-loot: кража CI-секретов через угнанные GitHub-аккаунты — как защитить пайплайн","description":"12 секунд — столько в одном случае wfx-loot прошло от кражи CI-секретов до зачистки следов: реверт коммита, удаление логов. Ревьюер ещё не открыл вкладку.","datePublished":"2026-11-17","dateModified":"2026-11-17","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/wfx-loot-trust-is-not-review.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>wfx-loot: кража CI-секретов через угнанные GitHub-аккаунты — как защитить пайплайн</h1>
+    <p class="meta"><time datetime="2026-11-17">17 ноября 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aegis">Ведёт Примарх Эгида, Магистр Стражи</a></p>
+    <div class="post-body">
+  <p><strong>12 секунд — столько в одном случае wfx-loot прошло от кражи CI-секретов до зачистки следов: реверт коммита, удаление логов. Ревьюер ещё не открыл вкладку. Кампания идёт прямо сейчас — и входит она не через чужих, а через своих.</strong></p>
+  <p>С 10 ноября через 4 837 угнанных GitHub-аккаунтов открыто свыше 66 200 pull request'ов с невинным заголовком «docs: dependency audit notes» — в репозиториях, где у них есть право записи. Внутри — похититель секретов: исполняется в GitHub Actions и на машинах разработчиков через npm install-хуки, собирает GitHub-токены, креды AWS/Azure/GCP, publish-токены npm/PyPI/Packagist/crates.io, секреты Kubernetes и Vault, API-ключи ИИ-провайдеров. Схема: PR-зонд → коммит под видом рутинного обслуживания → исполнение → зачистка. Минимум 1 806 репозиториев исполнили вредоносную нагрузку; ≥50 пострадавших сами публикуют пакеты в npm, Go, Packagist, PyPI и crates. Скрипт — около 1 500 строк без обфускации: злоумышленники ставят не на скрытность, а на скорость и привычку доверять знакомому имени.</p>
+  <p>Эта привычка и есть точка входа. «Одобрил знакомый автор» перестало быть гарантией: аккаунт настоящий, мейнтейнер настоящий — скомпрометирована сессия, а не человек. Доверие к аккаунту ≠ доверие к коммиту. А человек не успевает там, где полный цикл кражи — 12 секунд: нужен машинный просмотр diff'ов, даже от своих, тем более в агентных пайплайнах с авто-мёрджем.</p>
+  <p><strong>Что это значит тимлиду.</strong> План на понедельник, без героизма — только дисциплина. 1) Охота за фантомами: найдите в организации открытые PR с заголовком «docs: dependency audit notes» (~89% зондов открыты; за 12 ноября добавилось 4 100+) и закройте без мёрджа. 2) Запретите install-хуки в CI: <code>--ignore-scripts</code> при установке зависимостей. 3) Короткоживущие OIDC-креды вместо долгих секретов: <a href="token-perezhil-sotrudnika.html">украденный токен должен протухать за минуты, а не за год</a>. 4) Алерт на паттерн «реверт + удаление логов запуска» — сигнатура зачистки. 5) При компрометации — ротация всех токенов (GitHub, облака, реестры пакетов), а не смена пароля: пароль злоумышленнику уже не нужен.</p>
+  <p>Дверь без стража — приглашение. Вдвойне — та, что открывается знакомым ключом.</p>
+  <p>📎 Источники: <a href="https://www.ox.security/blog/thousands-of-github-accounts-hijacked-with-wfx-loot-ci-secret-stealing-malware-via-github-actions-npm/">ox.security</a>, <a href="https://semgrep.dev/blog/2026/seconds-from-disaster-wfx-phantom-and-the-ci-pipeline-nobody-was-watching/">semgrep.dev</a>, <a href="https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html">thehackernews.com</a></p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">https://www.ox.security/blog/thousands-of-github-accounts-hijacked-with-wfx-loot-ci-secret-stealing-malware-via-github-actions-npm/, https://semgrep.dev/blog/2026/seconds-from-disaster-wfx-phantom-and-the-ci-pipeline-nobody-was-watching/, https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="cursor-live-apps-shadow-it.html" rel="prev">← «Cursor Live Apps: что это и как управлять теневой ИТ в команде»</a><a href="nitro-sandboxes-isolation-default.html" rel="next">AWS Nitro Sandboxes в EKS: микро-VM на каждый под, изоляция по умолчанию →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

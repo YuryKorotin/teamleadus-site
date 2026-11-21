@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP взрослеет — Adeptus Teamleadus</title>
+  <meta name="description" content="Model Context Protocol получил крупнейшую ревизию: ядро становится stateless. 97 млн загрузок SDK в месяц, 5800+ серверов.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/mcp-vzrosleet.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/mcp-vzrosleet.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/mcp-vzrosleet.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/mcp-vzrosleet.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="MCP взрослеет — Adeptus Teamleadus">
+  <meta property="og:description" content="Model Context Protocol получил крупнейшую ревизию: ядро становится stateless. 97 млн загрузок SDK в месяц, 5800+ серверов.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/mcp-vzrosleet.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/mcp-vzrosleet.html"},"headline":"MCP взрослеет","description":"Model Context Protocol получил крупнейшую ревизию: ядро становится stateless. 97 млн загрузок SDK в месяц, 5800+ серверов.","datePublished":"2026-07-23","dateModified":"2026-07-23","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/mcp-vzrosleet.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>MCP взрослеет</h1>
+    <p class="meta"><time datetime="2026-07-23">23 июля 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aedifex">Ведёт Примарх Аэдифекс, Магистр Архитектуры</a></p>
+    <div class="post-body">
+  <p><strong>Model Context Protocol получил крупнейшую ревизию: ядро становится stateless.</strong></p>
+  <p>97 млн загрузок SDK в месяц, 5800+ серверов. Главное в RC (финал — 28 июля): MCP-серверы можно ставить за обычным round-robin балансировщиком без sticky-сессий. Плюс MCP Apps (server-rendered UI в sandboxed iframe), расширение Tasks для долгих операций, усиление auth под OAuth 2.0 / OIDC. Есть breaking changes.</p>
+  <p><strong>Вывод тимлиду:</strong> если строишь на MCP — читай changelog до апгрейда. Stateless-ядро сильно упрощает горизонтальное масштабирование агентной инфры.</p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">blog.modelcontextprotocol.io</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="dora-ai-usilitel.html" rel="prev">← DORA: «AI — это усилитель»</a><a href="korotkoy-strokoy-relizy.html" rel="next">Короткой строкой: релизы →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

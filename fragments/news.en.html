@@ -1,0 +1,30 @@
+      <li>
+        <time datetime="2026-11-10">November 10, 2026</time>
+        <h3>wfx-loot: hijacked GitHub accounts stealing CI secrets</h3>
+        <p>Since November 10, the wfx-loot campaign has used 4,837 hijacked GitHub accounts to open over 66,200 pull requests titled "docs: dependency audit notes." The payload is a secret stealer: it runs in GitHub Actions and via npm install hooks, harvesting GitHub tokens, cloud credentials, package-registry publish tokens, and AI-provider API keys, then covers its tracks — reverting the commit and deleting run logs, in one case within 12 seconds. At least 1,806 repositories executed the payload; roughly 89% of probe PRs remain open. The entry point is trusted maintainer accounts with merge rights: "approved by a familiar author" is no longer a guarantee. <a href="https://www.ox.security/blog/thousands-of-github-accounts-hijacked-with-wfx-loot-ci-secret-stealing-malware-via-github-actions-npm/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-09">November 9, 2026</time>
+        <h3>AWS Nitro Sandboxes: a micro-VM per EKS pod, built in</h3>
+        <p>On November 9 AWS introduced Nitro Sandboxes: every EKS pod can run in its own lightweight virtual machine under the Nitro Hypervisor — with its own Linux kernel and the same hardware isolation boundary that separates EC2 instances. Enabling it takes one line in the pod spec (<code>runtimeClassName</code>); no separate sandbox service is needed — sandboxes live on the cluster's existing nodes; Kubernetes 1.36+ required. Confidential mode treats even the cluster administrator as untrusted and provides cryptographic attestation via KMS. The headline use case is code written and executed by AI agents: hardware isolation becomes a line in a manifest rather than separate infrastructure. <a href="https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-05">November 5, 2026</time>
+        <h3>Cursor Live Apps: anyone on the team can now ship internal tools</h3>
+        <p>On November 5 Cursor shipped Live Apps: build and deploy "live" web applications without leaving the platform — from a plain-text description to a deployed app with no manual setup, with Postgres provisioning, Cursor SSO authentication, hosting, and link sharing. Available on all paid plans with cloud agents; the feature explicitly targets non-engineers — the examples feature tools for sales, operations, legal, and finance. Internal tools that used to live on an enthusiast's localhost now reach production in an evening — reopening the questions of ownership and data boundaries. <a href="https://cursor.com/changelog/build-live-apps">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-04">November 4, 2026</time>
+        <h3>Canva cuts 22% of staff, Squarespace 19%: the &quot;refound&quot; wave</h3>
+        <p>On November 4 Canva announced a restructuring affecting 1,271 people — 22% of its workforce. CEO Melanie Perkins framed it as a plan to "refound" the company: merging the product, growth, and platform teams and broadening roles with less specialization. The backdrop: growth slowed for the first time in a decade, with the revenue forecast cut from 30% to 20%. The same week Squarespace cut ~19% of staff — mostly product and engineering. The wave is being framed not as crisis response but as "restructuring for the AI era." <a href="https://techcrunch.com/2026/11/04/canva-lays-off-over-1200-people-amid-slowing-growth/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-02">November 2, 2026</time>
+        <h3>Anthropic S-1: $33.2B revenue, $895B compute commitments</h3>
+        <p>On November 2 Anthropic filed an amended S-1 with the SEC, disclosing its finances in full for the first time: $33.2B in revenue for the nine months of 2026 and roughly $895.4B in total compute purchase commitments through 2030 — across Google, Amazon, Microsoft, and SpaceX. The commitments are nearly seven times the company's cash position (~$132B). It is the first document where a frontier vendor's economics are visible in filings rather than leaks: essential reading on supplier resilience for anyone whose stack depends on Claude. <a href="https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-01">November 1, 2026</time>
+        <h3>EU AI Act deadline Dec 2 — synthetic content labeling</h3>
+        <p>December 2, 2026 is the EU AI Act deadline under Article 50(2) for systems placed on the market before August 2, 2026: synthetic content (text, images, audio, video) must be labeled and machine-detectable. The European AI Board has already shifted from writing rules to supervision — coordinating national authorities and setting enforcement priorities. High-risk requirements were postponed to 2027–2028 by the omnibus agreement, but that postponement does not extend to the Article 50 obligations. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">Full analysis →</a></p>
+      </li>

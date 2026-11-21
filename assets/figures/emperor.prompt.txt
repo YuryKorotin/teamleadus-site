@@ -1,0 +1,1 @@
+Источник: docs/prompts/site-visuals.md §4 (emperor). MJ, оригинал: content/art/figures/emperor.png; cwebp -q 55 -resize 720

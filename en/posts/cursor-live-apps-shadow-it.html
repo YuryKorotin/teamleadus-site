@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cursor Live Apps: how to govern shadow IT without banning it — Adeptus Teamleadus</title>
+  <meta name="description" content="Someone in legal shipped an internal tool to production overnight — database, auth, and a share link. Before November 5 that would have been an incident.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/cursor-live-apps-shadow-it.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/cursor-live-apps-shadow-it.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/cursor-live-apps-shadow-it.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/cursor-live-apps-shadow-it.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Cursor Live Apps: how to govern shadow IT without banning it — Adeptus Teamleadus">
+  <meta property="og:description" content="Someone in legal shipped an internal tool to production overnight — database, auth, and a share link. Before November 5 that would have been an incident.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/cursor-live-apps-shadow-it.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/cursor-live-apps-shadow-it.html"},"headline":"Cursor Live Apps: how to govern shadow IT without banning it","description":"Someone in legal shipped an internal tool to production overnight — database, auth, and a share link. Before November 5 that would have been an incident.","datePublished":"2026-11-15","dateModified":"2026-11-15","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/cursor-live-apps-shadow-it.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>Cursor Live Apps: how to govern shadow IT without banning it</h1>
+    <p class="meta"><time datetime="2026-11-15">November 15, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aedifex">Maintained by Primarch Aedifex, Magister of Architecture</a></p>
+    <div class="post-body">
+  <p><strong>Someone in legal shipped an internal tool to production overnight — database, auth, and a share link. Before November 5 that would have been an incident. Now it's a stock feature of the editor.</strong></p>
+  <p><a href="spacex-pokupaet-cursor.html">Cursor</a> released Live Apps: live web applications built and deployed without leaving the platform — automated scaffolding, Postgres provisioning, sign-in via Cursor SSO, hosting, and sharing by URL with specific people, groups, or the whole team. From a plain-text description to a deployed app with no manual setup; works with Cursor Origin and GitHub (GitLab promised), on all paid plans with cloud agents. Bundled in: scanning for exposed credentials and custom security rules for admins. The target audience is named outright: sales, operations, legal, finance. A day later, on November 6, voice chat with agents landed.</p>
+  <p>An architect recognizes this cycle: Access and Excel macros → shadow IT → painful migration. What's new this time is the speed. A shadow tool used to ripen for months on someone's localhost or sit in the platform team's backlog; now it's one evening from idea to production. Every such app is a debt. The question isn't whether to take it on (your org will, with or without you) but who repays it, and when. Six months out, the company owns a fleet of apps with data in separate Postgres instances, their own auth, and zero reviews. Prohibition doesn't work here; demand just moves to a darker corner. A frame does.</p>
+  <p><strong>What this means for a team lead.</strong> Four elements of a governance frame, in place before the first orphaned app appears. One: a registry. Every deployed app is visible — who built it, what it stores, who it's shared with. Two: every app has an owner and an expiry date; <a href="token-perezhil-sotrudnika.html">"forever" is not a date</a>, and renewal is a deliberate decision, not neglect. Three: data boundaries, an explicit list of what never lands in an auto-provisioned Postgres: personal data, financial records, production exports. Four: a graduation criterion. The moment other teams depend on the app, or its database becomes someone's source of truth, the prototype must graduate onto platform rails.</p>
+  <p>The frame costs you a registry and an audit cadence. Its absence costs a migration your team will run in a hurry, on its own dime. The first debt is far cheaper. Pay it this week.</p>
+  <p>📎 Sources: <a href="https://cursor.com/changelog/build-live-apps">cursor.com/changelog/build-live-apps</a>, <a href="https://cursor.com/changelog/voice-chat">cursor.com/changelog/voice-chat</a></p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://cursor.com/changelog/build-live-apps, https://cursor.com/changelog/voice-chat</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="refound-wave-generalists.html" rel="prev">← &quot;Refound,&quot; not &quot;layoffs&quot;: Canva cuts 22%, Squarespace 19% — and the honest talk your team needs</a><a href="wfx-loot-trust-is-not-review.html" rel="next">wfx-loot malware: CI secrets stolen via hijacked GitHub accounts — a response checklist →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
