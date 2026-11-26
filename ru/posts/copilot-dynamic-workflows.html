@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic workflows в GitHub Copilot: агентам нужна архитектура, а не доверие — Adeptus Teamleadus</title>
+  <meta name="description" content="«Дайте агентам автономию» — мантра индустрии агентных инструментов. 1 октября GitHub признал обратное: нужен явный control flow, а не доверенный исполнитель.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/copilot-dynamic-workflows.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/copilot-dynamic-workflows.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/copilot-dynamic-workflows.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/copilot-dynamic-workflows.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Dynamic workflows в GitHub Copilot: агентам нужна архитектура, а не доверие — Adeptus Teamleadus">
+  <meta property="og:description" content="«Дайте агентам автономию» — мантра индустрии агентных инструментов. 1 октября GitHub признал обратное: нужен явный control flow, а не доверенный исполнитель.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/copilot-dynamic-workflows.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/copilot-dynamic-workflows.html"},"headline":"Dynamic workflows в GitHub Copilot: агентам нужна архитектура, а не доверие","description":"«Дайте агентам автономию» — мантра индустрии агентных инструментов. 1 октября GitHub признал обратное: нужен явный control flow, а не доверенный исполнитель.","datePublished":"2026-10-15","dateModified":"2026-10-15","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/copilot-dynamic-workflows.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>Dynamic workflows в GitHub Copilot: агентам нужна архитектура, а не доверие</h1>
+    <p class="meta"><time datetime="2026-10-15">15 октября 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#aedifex">Ведёт Примарх Аэдифекс, Магистр Архитектуры</a></p>
+    <div class="post-body">
+  <p><strong>«Дайте агентам автономию» — мантра индустрии агентных инструментов. 1 октября GitHub признал обратное: нужен явный control flow, а не доверенный исполнитель.</strong></p>
+  <p>В публичное превью вышли dynamic workflows — программы, описывающие кодом (ни строки YAML), как исполняется задача: автоматизированные шаги плюс работа одного или нескольких агентов, последовательно или параллельно. Внутри — запуск команд и вызов сервисов, структурированная передача результатов между стадиями, проверка выводов одного агента другим, запросы ввода у пользователя и чекпоинты с возобновлением. Три поверхности — Copilot CLI, приложение Copilot и Copilot SDK; все планы; включается флагом <code>--experimental</code> или <code>/experimental on</code>. Ключевое отличие от <code>/fleet</code>, где Copilot сам раздаёт задачи субагентам: dynamic workflow закодирован заранее — ради предсказуемости и наблюдаемости.</p>
+  <p>Архитектура это уже видела. Хореография против оркестрации: микросервисы начинали со свободного обмена событиями, а сложные процессы в итоге получили оркестраторы с явным потоком управления. Сюжет повторился с LLM-агентами вместо сервисов — только быстрее. Тезис, с которым можно спорить: «автономность агентов» была не свойством будущего, а временным артефактом незрелости инструментов. Пока поток нельзя было закодировать, оставалось доверять — и надеяться. Решающий довод за оркестрацию — дебажабельность. Когда свободная делегация ошибается, непонятно, на каком шаге слетела логика; в кодированном воркфлоу каждая стадия и каждая передача результата — явная точка контроля. Свобода исполнителя — это долг, и выплачивает его тот, кто разбирает отказ.</p>
+  <p><strong>Что это значит тимлиду.</strong> Первое: <a href="shkala-al0-al5.html">разделите агентные задачи по цене ошибки</a>. Разведка, черновики, одноразовое — зона свободного делегирования, там ошибка дешёвая. Релизные процессы, миграции, всё повторяемое — только кодированный воркфлоу. Второе: проектируйте чекпоинты как границы отката — ставьте их там, где результат можно проверить и откуда можно возобновить, а не механически после каждого шага. Третье: передача между стадиями — контракт со структурой, а не пересказ в свободной форме; проверка выводов одного агента другим работает только на проверяемом формате. И последнее: это превью, API будет меняться — переносите процессы, но держите путь назад. Как измерять самих агентов — ремесло Когнита; дело архитектора — дать им границы.</p>
+  <p>📎 Источник: <a href="https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/">github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app</a></p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="github-ci-incident-week.html" rel="prev">← Сбои GitHub 5–7 октября 2026: четыре critical-инцидента за три дня — ваша CI тоже прод</a><a href="slugfest-npm-trusted-publishing.html" rel="next">SlugFest — уязвимость npm Trusted Publishing: 1500+ пакетов под угрозой перехвата →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

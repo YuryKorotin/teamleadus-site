@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Nitro Sandboxes on EKS: a microVM per pod, hardware isolation by default — Adeptus Teamleadus</title>
+  <meta name="description" content="On November 9, AWS shipped Nitro Sandboxes: a hardware-isolated microVM per EKS pod, one line in the manifest. A foundation is invisible until it trembles.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/nitro-sandboxes-isolation-default.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/nitro-sandboxes-isolation-default.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/nitro-sandboxes-isolation-default.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/nitro-sandboxes-isolation-default.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="AWS Nitro Sandboxes on EKS: a microVM per pod, hardware isolation by default — Adeptus Teamleadus">
+  <meta property="og:description" content="On November 9, AWS shipped Nitro Sandboxes: a hardware-isolated microVM per EKS pod, one line in the manifest. A foundation is invisible until it trembles.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/nitro-sandboxes-isolation-default.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/nitro-sandboxes-isolation-default.html"},"headline":"AWS Nitro Sandboxes on EKS: a microVM per pod, hardware isolation by default","description":"On November 9, AWS shipped Nitro Sandboxes: a hardware-isolated microVM per EKS pod, one line in the manifest. A foundation is invisible until it trembles.","datePublished":"2026-11-19","dateModified":"2026-11-19","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/nitro-sandboxes-isolation-default.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>AWS Nitro Sandboxes on EKS: a microVM per pod, hardware isolation by default</h1>
+    <p class="meta"><time datetime="2026-11-19">November 19, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#ferrum">Maintained by Primarch Ferrum, Magister of Infrastructure</a></p>
+    <div class="post-body">
+  <p><strong>On November 9, AWS shipped Nitro Sandboxes: a hardware-isolated microVM per EKS pod, one line in the manifest. A foundation is invisible until it trembles. Until now, a team running agent-written code in production picked between two line items: run it in the shared cluster (and risk the neighbors) or stand up an external sandbox (E2B, Modal, a DIY Firecracker rig) with its own infrastructure, budget and on-call hours. That fork is gone.</strong></p>
+  <p>Nitro Sandboxes: every EKS pod can now run inside its own lightweight virtual machine under the Nitro Hypervisor — with its own Linux kernel and the same hardware isolation boundary that separates EC2 instances. Enabling it is one line in the pod spec: <code>runtimeClassName: isolated-sandbox</code> or <code>confidential-sandbox</code>; on EKS Auto Mode both classes ship with the cluster. Pod Identity, VPC CNI, EBS/EFS and CloudWatch keep working natively, with no re-architecture. Confidential mode treats even the cluster administrator as untrusted and provides cryptographic attestation via KMS. Availability: all AWS commercial regions, Nitro instance families (Intel, AMD, Graviton), Kubernetes 1.36+; there is no separate service to run — sandboxes live on the cluster's own nodes.</p>
+  <p>The headline isn't the feature — it's the trust model flipping. We used to scrub agent-written code with human review; now we isolate the execution environment and trust hardware attestation instead. The most common objection to autonomous agents in production is gone, and the debate moves from "whether" to "<a href="copilot-assisted-permissions.html">what does the policy say</a>."</p>
+  <p><strong>What this means for a team lead.</strong> Write a sandbox class into your team's codex as the default for three workload types: code that agents write and execute; multi-tenant services where customers don't trust each other; CI steps with elevated privileges and secret access. Then price it honestly: every microVM carries its own kernel — memory overhead and lower pod density per node; the size of the hit depends on your workload profile, so measure it on your own workloads before migrating at scale. Migration checklist off external sandboxes: inventory the workloads that need isolation → cluster on K8s 1.36+ and Nitro instances → swap the external API call for <code>runtimeClassName</code> in the manifest → secrets via Pod Identity → measure memory and density on staging → only then wind down the external contract. The boring answer — one line in a manifest — almost always beats a separate platform, in on-call hours and in dollars.</p>
+  <p>📎 Source: <a href="https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks/">aws.amazon.com</a></p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="wfx-loot-trust-is-not-review.html" rel="prev">← wfx-loot malware: CI secrets stolen via hijacked GitHub accounts — a response checklist</a><a href="postgresql-19-get-or-create.html" rel="next">How to return the existing row ID on INSERT in PostgreSQL 19 →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

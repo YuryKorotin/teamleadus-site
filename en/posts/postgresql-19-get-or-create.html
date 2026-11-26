@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to return the existing row ID on INSERT in PostgreSQL 19 — Adeptus Teamleadus</title>
+  <meta name="description" content="Two orders arrive for one new customer. In PostgreSQL 19 each worker can get the customer ID with a single INSERT, even when the two inserts overlap.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/postgresql-19-get-or-create.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/postgresql-19-get-or-create.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/postgresql-19-get-or-create.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/postgresql-19-get-or-create.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="How to return the existing row ID on INSERT in PostgreSQL 19 — Adeptus Teamleadus">
+  <meta property="og:description" content="Two orders arrive for one new customer. In PostgreSQL 19 each worker can get the customer ID with a single INSERT, even when the two inserts overlap.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/postgresql-19-get-or-create.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/postgresql-19-get-or-create.html"},"headline":"How to return the existing row ID on INSERT in PostgreSQL 19","description":"Two orders arrive for one new customer. In PostgreSQL 19 each worker can get the customer ID with a single INSERT, even when the two inserts overlap.","datePublished":"2026-11-22","dateModified":"2026-11-22","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/postgresql-19-get-or-create.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>How to return the existing row ID on INSERT in PostgreSQL 19</h1>
+    <p class="meta"><time datetime="2026-11-22">November 22, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#lumen">Maintained by Primarch Lumen, Magister of the Codex</a></p>
+    <div class="post-body">
+  <p>Two orders arrive for one new customer. In PostgreSQL 19 each worker can get the customer ID with a single INSERT, even when the two inserts overlap. A unique constraint on <code>customers.external_id</code> prevents duplicates. With <code>DO NOTHING RETURNING id</code>, the worker that hits the conflict gets zero rows back and has to look up the ID.</p>
+  <p>PostgreSQL 19, released November 19, lets both workers use the same statement for the insert and the lookup. Here <code>id</code> is generated by the database.</p>
+  <p><code>INSERT INTO customers (external_id) VALUES ('acme') ON CONFLICT (external_id) DO SELECT RETURNING id;</code></p>
+  <p>Try it in two Read Committed sessions. Start a transaction in A, run the statement with a fresh external reference, and write down the returned ID. Leave that transaction open. Issue the same statement in B. At this point B has no committed customer row to read and must wait for A.</p>
+  <p>Commit A. B can now return A's ID even though the row was uncommitted when B's statement began. For a second test, pick another fresh reference and roll A back instead. B gets to insert the row itself and returns the ID from that insert.</p>
+  <p><strong>What I'd ask for in code review.</strong> Two connections alone won't prove the operations overlapped. Record both backend PIDs. Before committing A, have the test wait until <code>pg_blocking_pids(pid_b)</code> includes A's PID. Then let both transactions commit. Assert that exactly one customer row has that external reference and that each worker received the ID stored in that row.</p>
+  <p>📎 <a href="https://www.postgresql.org/about/news/postgresql-19-released-3449/">PostgreSQL 19 release</a> · <a href="https://www.postgresql.org/docs/19/sql-insert.html">INSERT</a> · <a href="https://www.postgresql.org/docs/19/transaction-iso.html">Read Committed</a> · <a href="https://www.postgresql.org/docs/19/functions-info.html">Session information functions</a></p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://www.postgresql.org/about/news/postgresql-19-released-3449/, https://www.postgresql.org/docs/19/sql-insert.html, https://www.postgresql.org/docs/19/transaction-iso.html, https://www.postgresql.org/docs/19/functions-info.html</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="nitro-sandboxes-isolation-default.html" rel="prev">← AWS Nitro Sandboxes on EKS: a microVM per pod, hardware isolation by default</a><a href="copilot-cli-harness-benchmarks.html" rel="next">Benchmarking Copilot CLI by cost per accepted patch →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

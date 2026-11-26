@@ -1,0 +1,1 @@
+Источник: docs/prompts/site-visuals.md §2 (OG RU). MJ 1024x1024, кроп 1024x538 offset y=120; оригинал: content/art/site/og-source.png

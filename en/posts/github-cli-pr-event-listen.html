@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to wait for required PR checks with GitHub CLI — Adeptus Teamleadus</title>
+  <meta name="description" content="Suppose unit tests pass at 10:02 and integration tests at 10:09. A GitHub CLI bot that requests review at 10:02 adds seven minutes of CI to the review queue.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/en/posts/github-cli-pr-event-listen.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/github-cli-pr-event-listen.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/github-cli-pr-event-listen.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/github-cli-pr-event-listen.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="How to wait for required PR checks with GitHub CLI — Adeptus Teamleadus">
+  <meta property="og:description" content="Suppose unit tests pass at 10:02 and integration tests at 10:09. A GitHub CLI bot that requests review at 10:02 adds seven minutes of CI to the review queue.">
+  <meta property="og:url" content="https://teamleadus.com/en/posts/github-cli-pr-event-listen.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/en/posts/github-cli-pr-event-listen.html"},"headline":"How to wait for required PR checks with GitHub CLI","description":"Suppose unit tests pass at 10:02 and integration tests at 10:09. A GitHub CLI bot that requests review at 10:02 adds seven minutes of CI to the review queue.","datePublished":"2026-11-26","dateModified":"2026-11-26","inLanguage":"en","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Emblem: winged gear" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="../index.html#news">Herald</a>
+      <a href="../index.html#posts">Analyses</a>
+      <a href="../ordo.html">The Ordo</a>
+      <a href="../founder.html">The Founder</a>
+      <a href="../index.html#social">Channels</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="../../ru/posts/github-cli-pr-event-listen.html" hreflang="ru" lang="ru" onclick="try{localStorage.lang='ru'}catch(e){}">RU</a><span class="sep">|</span><span class="active">EN</span></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← Back to the codex</a>
+  <article>
+    <h1>How to wait for required PR checks with GitHub CLI</h1>
+    <p class="meta"><time datetime="2026-11-26">November 26, 2026</time> · analysis</p>
+    <p class="primarch-plaque"><a href="../ordo.html#tempus">Maintained by Primarch Tempus, Magister of the Rhythm</a></p>
+    <div class="post-body">
+  <p>Suppose unit tests pass at 10:02 and integration tests at 10:09. A GitHub CLI bot that requests review at 10:02 adds seven minutes of CI to the <a href="pr-review-stages.html">review queue</a>.</p>
+  <p>GitHub CLI 2.105.0, released November 18, lets a script wait for pull request events. You'll need access to the Event Streams preview on github.com, which has a waitlist. If the tests run in separate check suites, each suite emits its own completion event. By default, <code>gh event listen</code> exits after the first match.</p>
+  <p>Set <code>PR</code> to the pull request URL and keep the stream open with <code>gh event listen --resource "$PR" --event com.github.pull_request.check_suite.status.changed.v1 --follow</code>. As soon as the CLI reports that the stream is attached, run <code>gh pr checks "$PR" --required</code> in a second shell with the same URL. Read the checks again on each event and whenever the stream reconnects. If integration finished while you were offline, its result will already be there. GitHub won't replay the missed event.</p>
+  <p><strong>Give the reviewer a commit they can identify.</strong> Read the head SHA with <code>gh pr view "$PR" --json headRefOid --jq .headRefOid</code> before and after fetching the checks. If a push changed the SHA, start the read again. Look for both expected check names on that revision. A missing integration result leaves the handoff open even if every visible row is green. Once both tests pass, put the SHA in the review request. In this example, 10:09 is the earliest the reviewer could have picked up a tested revision.</p>
+  <p>📎 <a href="https://github.blog/changelog/2026-11-18-wait-for-pull-request-events-with-github-cli/">GitHub announcement</a> · <a href="https://cli.github.com/manual/gh_event_listen">Event listener</a> · <a href="https://cli.github.com/manual/gh_pr_checks">Required checks</a></p>
+    </div>
+    <p class="sources"><span class="label">Sources</span><span class="mono">https://github.blog/changelog/2026-11-18-wait-for-pull-request-events-with-github-cli/, https://cli.github.com/manual/gh_event_listen, https://cli.github.com/manual/gh_pr_checks, https://cli.github.com/manual/gh_pr_view</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Adjacent analyses"><a href="copilot-cli-harness-benchmarks.html" rel="prev">← Benchmarking Copilot CLI by cost per accepted patch</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · an independent publication on engineering leadership</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

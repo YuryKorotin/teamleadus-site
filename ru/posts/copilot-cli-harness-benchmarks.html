@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Как сравнить Copilot CLI с другими агентами по цене принятого патча — Adeptus Teamleadus</title>
+  <meta name="description" content="Сколько стоит исправить баг с помощью Copilot CLI? Я бы дал двум оболочкам одни и те же десять багов и посчитал, сколько исправлений каждой примет ревьюер.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/copilot-cli-harness-benchmarks.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/copilot-cli-harness-benchmarks.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/copilot-cli-harness-benchmarks.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/copilot-cli-harness-benchmarks.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Как сравнить Copilot CLI с другими агентами по цене принятого патча — Adeptus Teamleadus">
+  <meta property="og:description" content="Сколько стоит исправить баг с помощью Copilot CLI? Я бы дал двум оболочкам одни и те же десять багов и посчитал, сколько исправлений каждой примет ревьюер.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/copilot-cli-harness-benchmarks.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/copilot-cli-harness-benchmarks.html"},"headline":"Как сравнить Copilot CLI с другими агентами по цене принятого патча","description":"Сколько стоит исправить баг с помощью Copilot CLI? Я бы дал двум оболочкам одни и те же десять багов и посчитал, сколько исправлений каждой примет ревьюер.","datePublished":"2026-11-24","dateModified":"2026-11-24","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/copilot-cli-harness-benchmarks.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>Как сравнить Copilot CLI с другими агентами по цене принятого патча</h1>
+    <p class="meta"><time datetime="2026-11-24">24 ноября 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#cognitus">Ведёт Примарх Когнит, Магистр Машинного Разума</a></p>
+    <div class="post-body">
+  <p>Сколько стоит исправить баг с помощью Copilot CLI? Я бы дал двум оболочкам одни и те же десять багов и посчитал, сколько исправлений каждой примет ревьюер. Расходы на отброшенные патчи тоже попадут в счёт.</p>
+  <p>17 ноября в публичной версии бенчмарков GitHub появилась экспериментальная вкладка Harnesses. В ней Copilot CLI сравнивают с Claude Code или Codex CLI. В каждой паре одна и та же модель с настройкой <code>reasoning effort = medium</code>. На графике по одной оси отложена доля решённых задач, по другой — средние затраты на задачу. Для разницы в долях и для экономии GitHub приводит приблизительные 95%-ные бутстрэп-интервалы. Если интервал разницы в долях включает ноль, по этим прогонам я бы оставил вопрос о преимуществе открытым.</p>
+  <p><strong>Для своего замера я бы взял закрытые баги из бэклога.</strong> Для каждого нужен коммит до исправления. Обеим оболочкам дайте исходное описание бага и по одной попытке на чистой копии этого коммита. <a href="copilot-fusion-router.html">Зафиксируйте версию модели</a> и уровень рассуждения. До запуска договоритесь с ревьюером, какой патч он примет, и проверочный тест запустите после прогона.</p>
+  <p>Допустим, задач десять. Оболочка A потратила $10, ревьюер принял пять патчей. Оболочка B потратила $12, он принял восемь. Тогда попытка стоит в среднем $1 у A и $1,20 у B. Разделите весь расход каждой оболочки на число принятых патчей, и получите $2 у A и $1,50 у B. В этом условном примере один принятый патч у B обходится на 50 центов дешевле.</p>
+  <p>Рядом с расходами запишите минуты ревью. По счёту за модель нельзя узнать, сколько времени ушло у инженера на проверку тех пяти патчей, которые он отклонил у A.</p>
+  <p>📎 <a href="https://github.blog/changelog/2026-11-17-github-copilot-benchmarks-site-adds-harness-comparisons/">Как GitHub сравнивает оболочки</a></p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">https://github.blog/changelog/2026-11-17-github-copilot-benchmarks-site-adds-harness-comparisons/</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="postgresql-19-get-or-create.html" rel="prev">← Как вернуть ID при конфликте вставок в PostgreSQL 19</a><a href="github-cli-pr-event-listen.html" rel="next">Как дождаться обязательных проверок PR в GitHub CLI →</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>

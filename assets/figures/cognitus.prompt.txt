@@ -1,0 +1,1 @@
+Источник: docs/prompts/site-visuals.md §4 (cognitus). MJ, оригинал: content/art/figures/cognitus.png; cwebp -q 55 -resize 720

@@ -1,0 +1,30 @@
+      <li>
+        <time datetime="2026-11-19">November 19, 2026</time>
+        <h3>PostgreSQL 19 can return an existing row on INSERT</h3>
+        <p>PostgreSQL 19 shipped on November 19. For a customer table with a unique external_id, an INSERT ending in ON CONFLICT (external_id) DO SELECT RETURNING id returns the new customer's ID or the ID already associated with that key. Both outcomes take one round trip. <a href="https://www.postgresql.org/about/news/postgresql-19-released-3449/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-18">November 18, 2026</time>
+        <h3>GitHub CLI adds gh event listen for pull requests</h3>
+        <p>GitHub CLI 2.105.0 adds gh event listen for teams with access to the Event Streams preview on GitHub.com. A script can subscribe to reviews, changes to a pull request or completed check suites. By default the command prints the first matching event as a line of JSON and exits. <a href="https://github.blog/changelog/2026-11-18-wait-for-pull-request-events-with-github-cli/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-17">November 17, 2026</time>
+        <h3>GitHub benchmarks Copilot CLI against Claude Code and Codex</h3>
+        <p>GitHub added a harness comparison to its public benchmark preview on November 17. Readers can compare Copilot CLI with Claude Code or Codex CLI for matched models at medium reasoning effort. Each point shows the share of tasks solved and the average cost per task attempted. <a href="https://github.blog/changelog/2026-11-17-github-copilot-benchmarks-site-adds-harness-comparisons/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-10">November 10, 2026</time>
+        <h3>wfx-loot: hijacked GitHub accounts stealing CI secrets</h3>
+        <p>Since November 10, the wfx-loot campaign has used 4,837 hijacked GitHub accounts to open over 66,200 pull requests titled "docs: dependency audit notes." The payload is a secret stealer: it runs in GitHub Actions and via npm install hooks, harvesting GitHub tokens, cloud credentials, package-registry publish tokens, and AI-provider API keys, then covers its tracks — reverting the commit and deleting run logs, in one case within 12 seconds. At least 1,806 repositories executed the payload; roughly 89% of probe PRs remain open. The entry point is trusted maintainer accounts with merge rights: "approved by a familiar author" is no longer a guarantee. <a href="https://www.ox.security/blog/thousands-of-github-accounts-hijacked-with-wfx-loot-ci-secret-stealing-malware-via-github-actions-npm/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-09">November 9, 2026</time>
+        <h3>AWS Nitro Sandboxes: a micro-VM per EKS pod, built in</h3>
+        <p>On November 9 AWS introduced Nitro Sandboxes: every EKS pod can run in its own lightweight virtual machine under the Nitro Hypervisor — with its own Linux kernel and the same hardware isolation boundary that separates EC2 instances. Enabling it takes one line in the pod spec (<code>runtimeClassName</code>); no separate sandbox service is needed — sandboxes live on the cluster's existing nodes; Kubernetes 1.36+ required. Confidential mode treats even the cluster administrator as untrusted and provides cryptographic attestation via KMS. The headline use case is code written and executed by AI agents: hardware isolation becomes a line in a manifest rather than separate infrastructure. <a href="https://aws.amazon.com/blogs/containers/aws-nitro-sandboxes-hardware-enforced-workload-isolation-on-amazon-eks/">Full analysis →</a></p>
+      </li>
+      <li>
+        <time datetime="2026-11-05">November 5, 2026</time>
+        <h3>Cursor Live Apps: anyone on the team can now ship internal tools</h3>
+        <p>On November 5 Cursor shipped Live Apps: build and deploy "live" web applications without leaving the platform — from a plain-text description to a deployed app with no manual setup, with Postgres provisioning, Cursor SSO authentication, hosting, and link sharing. Available on all paid plans with cloud agents; the feature explicitly targets non-engineers — the examples feature tools for sales, operations, legal, and finance. Internal tools that used to live on an enthusiast's localhost now reach production in an evening — reopening the questions of ownership and data boundaries. <a href="https://cursor.com/changelog/build-live-apps">Full analysis →</a></p>
+      </li>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Как дождаться обязательных проверок PR в GitHub CLI — Adeptus Teamleadus</title>
+  <meta name="description" content="Допустим, модульные тесты прошли в 10:02, интеграционные в 10:09. Если бот на GitHub CLI позовёт ревьюера в 10:02, семь минут CI попадут в ожидание ревью.">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="canonical" href="https://teamleadus.com/ru/posts/github-cli-pr-event-listen.html">
+  <link rel="alternate" hreflang="ru" href="https://teamleadus.com/ru/posts/github-cli-pr-event-listen.html">
+  <link rel="alternate" hreflang="en" href="https://teamleadus.com/en/posts/github-cli-pr-event-listen.html">
+  <link rel="alternate" hreflang="x-default" href="https://teamleadus.com/en/posts/github-cli-pr-event-listen.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Adeptus Teamleadus">
+  <meta property="og:title" content="Как дождаться обязательных проверок PR в GitHub CLI — Adeptus Teamleadus">
+  <meta property="og:description" content="Допустим, модульные тесты прошли в 10:02, интеграционные в 10:09. Если бот на GitHub CLI позовёт ревьюера в 10:02, семь минут CI попадут в ожидание ревью.">
+  <meta property="og:url" content="https://teamleadus.com/ru/posts/github-cli-pr-event-listen.html">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://teamleadus.com/assets/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="538">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://teamleadus.com/ru/posts/github-cli-pr-event-listen.html"},"headline":"Как дождаться обязательных проверок PR в GitHub CLI","description":"Допустим, модульные тесты прошли в 10:02, интеграционные в 10:09. Если бот на GitHub CLI позовёт ревьюера в 10:02, семь минут CI попадут в ожидание ревью.","datePublished":"2026-11-26","dateModified":"2026-11-26","inLanguage":"ru","image":["https://teamleadus.com/assets/og.jpg"],"author":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}},"publisher":{"@type":"Organization","name":"Adeptus Teamleadus","url":"https://teamleadus.com/","logo":{"@type":"ImageObject","url":"https://teamleadus.com/assets/og.jpg"}}}</script>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><svg class="emblem" width="52" height="28" viewBox="0 0 120 64" role="img" aria-label="Эмблема: шестерня с крыльями" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <circle cx="60" cy="34" r="14"/>
+  <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+  <line x1="75" y1="34" x2="80" y2="34"/><line x1="45" y1="34" x2="40" y2="34"/>
+  <line x1="60" y1="19" x2="60" y2="14"/><line x1="60" y1="49" x2="60" y2="54"/>
+  <line x1="70.6" y1="23.4" x2="74.1" y2="19.9"/><line x1="49.4" y1="44.6" x2="45.9" y2="48.1"/>
+  <line x1="49.4" y1="23.4" x2="45.9" y2="19.9"/><line x1="70.6" y1="44.6" x2="74.1" y2="48.1"/>
+  <path d="M42 30 C 32 26, 24 18, 18 6"/>
+  <path d="M41 36 C 30 34, 20 28, 8 16"/>
+  <path d="M43 42 C 32 42, 22 40, 10 30"/>
+  <path d="M78 30 C 88 26, 96 18, 102 6"/>
+  <path d="M79 36 C 90 34, 100 28, 112 16"/>
+  <path d="M77 42 C 88 42, 98 40, 110 30"/>
+</svg><span>Adeptus Teamleadus</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="../index.html#news">Вестник</a>
+      <a href="../index.html#posts">Разборы</a>
+      <a href="../ordo.html">Орден</a>
+      <a href="../founder.html">Основатель</a>
+      <a href="../index.html#social">Связь</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Язык"><span class="active">RU</span><span class="sep">|</span><a href="../../en/posts/github-cli-pr-event-listen.html" hreflang="en" lang="en" onclick="try{localStorage.lang='en'}catch(e){}">EN</a></nav>
+  </div>
+</header>
+<main class="wrap post">
+  <a class="crumb" href="../index.html#posts">← К оглавлению</a>
+  <article>
+    <h1>Как дождаться обязательных проверок PR в GitHub CLI</h1>
+    <p class="meta"><time datetime="2026-11-26">26 ноября 2026</time> · разбор</p>
+    <p class="primarch-plaque"><a href="../ordo.html#tempus">Ведёт Примарх Темпус, Магистр Ритма</a></p>
+    <div class="post-body">
+  <p>Допустим, модульные тесты прошли в 10:02, интеграционные в 10:09. Если бот на GitHub CLI позовёт ревьюера в 10:02, семь минут CI попадут в <a href="pr-review-stages.html">ожидание ревью</a>.</p>
+  <p>18 ноября в GitHub CLI 2.105.0 появилась команда <code>gh event listen</code>. Для неё нужен доступ к предварительной версии Event Streams на github.com, куда GitHub приглашает по списку ожидания. В нашем примере тесты разбиты на два набора (check suites). Каждый присылает своё событие по завершении, а команда по умолчанию выходит после первого.</p>
+  <p>Чтобы услышать оба, сохраните ссылку на pull request в переменной <code>PR</code> и запустите <code>gh event listen --resource "$PR" --event com.github.pull_request.check_suite.status.changed.v1 --follow</code>. Когда CLI сообщит о подключении, в другом терминале с тем же URL выполните <code>gh pr checks "$PR" --required</code>. Повторяйте запрос после каждого события и сразу после переподключения. GitHub пропускает события, случившиеся до подключения или во время разрыва. Если интеграционные тесты успели пройти в этот промежуток, их результат уже виден в списке проверок.</p>
+  <p>До и после чтения списка получите SHA последнего коммита командой <code>gh pr view "$PR" --json headRefOid --jq .headRefOid</code>. Если SHA изменился, прочитайте проверки заново. При неизменном SHA найдите обе обязательные проверки по имени. Пока одна отсутствует, ещё выполняется или упала, приглашать рано. Когда обе прошли, укажите SHA в приглашении. В нашем примере отсчёт ожидания ревью можно начать в 10:09.</p>
+  <p>📎 <a href="https://github.blog/changelog/2026-11-18-wait-for-pull-request-events-with-github-cli/">Анонс GitHub</a> · <a href="https://cli.github.com/manual/gh_event_listen">События PR</a> · <a href="https://cli.github.com/manual/gh_pr_checks">Обязательные проверки</a></p>
+    </div>
+    <p class="sources"><span class="label">Источники</span><span class="mono">https://github.blog/changelog/2026-11-18-wait-for-pull-request-events-with-github-cli/, https://cli.github.com/manual/gh_event_listen, https://cli.github.com/manual/gh_pr_checks, https://cli.github.com/manual/gh_pr_view</span></p>
+  </article>
+  <nav class="post-nav" aria-label="Соседние разборы"><a href="copilot-cli-harness-benchmarks.html" rel="prev">← Как сравнить Copilot CLI с другими агентами по цене принятого патча</a></nav>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Adeptus Teamleadus · независимое медиа об инженерном лидерстве</span>
+    <span><a href="https://t.me/adeptysteamleadus" rel="noopener">Telegram</a> · <a href="../index.html">teamleadus.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
